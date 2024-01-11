@@ -1,0 +1,354 @@
+/*====Table Eventos====*/
+
+.home-section .container-eventos{
+    width: 96%;
+    margin-top: 15px;
+    border: 11px solid rgb(230, 182, 93);;
+    border-radius: 11px;
+    position: relative;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+.home-section .content-evento {
+    display: flex;
+    margin-top: 25px;
+    width: 94%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.home-section .content-evento #line-left, #line-right {
+    color: orange;
+    border: 2px solid orange;
+    margin: 6px 0;
+    
+}
+
+.home-section .content-evento #title-eventos {
+    display: flex;
+    margin-top: -5px;
+    justify-content: center;
+    font-size: x-large;
+}
+
+.home-section .content-search {
+    width: 94%;
+    margin-top: 45px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.home-section .content-search .d-flex {
+    display: flex;
+    justify-content: right;
+}
+
+.home-section .content-search input {
+    width: 40%;
+    border: 1px solid black;
+}
+
+.home-section .content-search button {
+    border: 1px solid black;
+    margin-left: 5px;
+}
+
+.home-section .content-search button:hover{
+    background: orange;
+}
+
+.home-section .table-evento {
+    display: flex;
+    margin-top: 10px;
+    text-align: center;
+    width: 94%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.home-section .table thead tr th {
+    background:  #848F9E;
+}
+
+.home-section .table-evento tbody tr td {
+    border-collapse: collapse;
+    font-size: 12PX;
+}
+
+/*
+
+.home-section .table-evento thead tr th {
+    background: #CAD2DC;
+}
+
+.home-section .table-evento tbody tr td {
+    border-collapse: collapse;
+}
+
+.home-section .table-evento tbody tr:nth-child(odd) td {
+    background: #FBF8EF;
+}
+
+
+.home-section .table-evento tbody tr:nth-child(odd) td {
+    background: #FBF8EF;
+}
+
+.home-section .table-evento tbody tr:nth-child(even) td {
+    background: #FEF5E7;
+}
+
+*/
+
+.home-section .table-evento tbody tr td img {
+    width: 90px;
+    height: 90px;
+    background-size: cover;
+    background-position: center;
+}
+
+.home-section .table-evento tbody tr td .bi-pencil-fill {
+    font-size: 29px;
+    color: black;
+}
+
+.home-section .table-evento tbody tr td .bi-pencil-fill::before {
+    font-size: 18px;
+}
+
+
+.home-section .table-evento tbody tr td #btn-edit {
+    font-size: smaller;
+    text-decoration: none;
+    border-radius: 50%;
+    border: 2px solid black;
+    padding: 5px;
+}
+
+.home-section .table-evento tbody tr td .bi-x-circle {
+    font-size: 30px;
+    color: black;
+    margin: 5px;
+}
+
+.home-section .table-evento tbody tr td #btn-delete a {
+    margin-top: 5px;
+}
+
+.home-section .peg-button-arrow {
+    display: flex;
+    width: 94%;
+    margin-top: 25px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.home-section .peg-button-arrow #btn-agregar {
+    display: flex;
+    justify-content: left;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid orange;
+    justify-content: center;
+    width: 25%;
+    padding: 4px;
+    border-radius: 8px;
+    background: orange;
+    color: white;
+}
+
+.home-section .peg-button-arrow #btn-agregar:hover {
+    background: white;
+    border: 2px solid orange;
+    color: black;
+}
+
+.home-section .peg-button-arrow .pagination {
+    display: flex;
+    justify-content: right;
+}
+
+.home-section .peg-button-arrow #arrow{
+    display: flex;
+    justify-content: center;
+}
+
+.home-section .peg-button-arrow .bxs-left-arrow, .bxs-right-arrow {
+    font-size: 22px;
+    color: black;
+}
+
+.home-section .peg-button-arrow .pagination .page-item{
+    color: black;
+}
+
+.home-section .peg-button-arrow .pagination .page-item .page-link{
+    color: black;
+}
+
+.home-section .peg-button-arrow .pagination .page-item .page-link:hover{
+    background: orange;
+    color: white;
+}
+
+/*========CSS Mis Eventos=====*/
+
+.home-section .container-miseventos {
+    width: 80%;
+    margin-top: 25px;
+    border: 11px solid rgb(230, 182, 93);
+    border-radius: 11px;
+    position: relative;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+.home-section .container-miseventos .table {
+    width: 96%;
+    position: relative;
+    left: 50%;
+    margin-top: 30px;
+    transform: translate(-50%);
+}
+
+.home-section .container-miseventos .table thead tr th {
+    background:  #848F9E;
+}
+
+.home-section .container-miseventos .btn-update {
+    position: relative;
+    left: 50%;
+    padding: 20px 0px;
+    transform: translateX(-50%);
+}
+.home-section .container-miseventos #btn-actualizar {
+    text-decoration: none;
+    position: relative;
+    left: 50%;
+    border: 2px solid orange;
+    color: white;
+    background: orange;
+    border-radius: 10px;
+    padding: 5px 20px;
+    transform: translateX(-50%);
+    margin: 20px 0px;
+    
+}
+
+.home-section .container-miseventos #btn-actualizar:hover{
+    background: white;
+    color: black;
+    
+}
+
+/*======CSS Perfil User==========*/
+
+.home-section .container-perfil {
+    display: block;
+    justify-content: center;
+    width: 70%;
+    height: auto;
+    border: 8px solid orange;
+    border-radius: 15px;
+    position: relative;
+    left: 50%;
+    margin-top: 50px;
+    transform: translateX(-50%);
+}
+
+.home-section .container-perfil .content-title {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.home-section .container-perfil .col-4 {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.home-section .container-perfil .col-4 strong {
+    font-size: 22px;
+    margin-top: 2px;
+}
+
+.home-section .container-perfil .col-4 .bx-user {
+    font-size: 38px;
+    color: orange;
+}
+
+.home-section .container-perfil .col-4 .bx-file {
+    font-size: 38px;
+    color: orange;
+}
+
+.home-section .container-perfil .content-title hr {
+    border: 2px solid orange;
+    background-color: orange;
+    border-color: orange;
+    color: orange;
+    width: 100%;
+}
+
+.home-section .container-perfil .content-info {
+    display: flex;
+    justify-content: center;
+}
+
+.home-section .container-perfil .content-info img{
+    width: 210px;
+    height: 210px;
+    border-radius: 10px;
+}
+
+.home-section .content-info .foto {
+    display: flex;
+    justify-content: left;
+    padding: 30px 30px;
+    margin: 0px 30px;
+    position: relative;
+    left: -100px;
+}
+
+.home-section .content-info .info {
+    margin-top: 60px;
+    position: relative;
+    left: -60px;
+}
+
+.home-section .content-info .info strong {
+    font-size: 32px;
+}
+
+.home-section .content-info .info strong {
+    font-size: 32px;
+}
+
+.home-section .content-info .btn-foto {
+    text-decoration: none;
+    color: orange;
+    font-size: 16px;
+    border: 1px solid orange;
+    background-color: orange;
+
+}
+
+.home-section .content-rol {
+    background-color: rgb(235, 232, 232);
+    margin: 20px 20px;
+}
+
+.home-section .content-plus {
+    display: flex;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
