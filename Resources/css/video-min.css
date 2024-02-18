@@ -1,0 +1,26 @@
+.boton-modal {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .modalVideo {
+    display: none;
+    position: absolute;
+    max-width: 400px;
+    background-color: transparent;
+    z-index: 1; /* Asegura que el modal esté encima de otros elementos */
+  }
+  
+  .contenido-modal-video {
+    background-color:transparent;
+    max-width: 400px;
+    position: relative;
+  }
+
+  .video{
+    width: 200px; /* ajusta el ancho */
+    height: auto; /* mantiene la proporción original */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  }
+  

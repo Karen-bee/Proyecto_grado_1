@@ -1,0 +1,183 @@
+/* Google Font Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Source+Code+Pro:wght@500;600&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Source Code Pro', monospace"
+}
+
+.container-login .content-section {
+    display: grid;
+    justify-content: center;
+    max-width: 600px;
+    position: relative;
+    border: 10px solid orange;
+    left: 50%;
+    margin-top: 2%;
+    transform: translateX(-50%);
+    border-radius: 20px;
+}
+
+.container-login .content-section .title-login{
+    display: inline-flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.container-login .content-section .title-login img{
+    width: 80px;
+}
+
+.container-login .content-section .title-login strong {
+    font-size: 25px;
+    margin-top: 16px;
+    color: orange;
+}
+
+.container-login .content-section .row {
+    width: 100%;
+    margin: 15px 10px;
+    margin-top: 15px;
+}
+
+.container-login .content-section .g-recaptcha {
+    margin-top: 15px;
+}
+
+.container-login .content-section form .bi {
+    font-size: 25px;
+}
+
+.container-login .content-section .btn-registre {
+    display: inline-flex;
+}
+
+.container-login .content-section .btn-registre  .btn-warning {
+    width: 100px;
+    height: 50px;
+    color: white;
+    margin-top: 27px;
+    margin-left:25px;
+}
+
+.container-login .content-section .btn-registre  .btn-warning:hover {
+    background: white;
+    color: black;
+    border: 2px solid orange;
+
+}
+
+
+/*=========CSS LOGIN==========*/
+
+.modal .modal-body {
+    background-image: url(/Literagiando/Resources/img/fondo-login.jfif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 30px;
+}
+.modal .modal-body .imgF {
+    position: absolute;
+    background-image: url(/Literagiando/Resources/img/Logo_Literagiando.png);
+    background-repeat: no-repeat;
+    background-size: contain; 
+    background-position: center center; /* Centra la imagen horizontal y verticalmente */
+    width: 300px;
+    height: 300px;
+    left: 50px;
+    top: 50px;
+}
+
+
+
+.modal .modal-content {
+    height: 576px;
+    width: 850px;
+    border-radius: 15px;
+}
+
+.modal .modal-body .content-title {
+    display: inline-flex;
+    justify-content: center;
+}
+
+.modal .btn-close {
+    position: relative;
+    left: 93%;
+    transform: translatez(10px);
+    margin-top: -36px;
+    font-size: 16px;
+}
+
+.modal .modal-content strong{
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.modal .modal-body .container-log {
+    max-width: 350px;
+    height: 70%;
+    margin-top: 28px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 0 15px;
+    border: 10px 10px;
+    position: relative;
+    left: 52%;
+    transform: translateZ(10px);
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal .modal-body .container-log .content-logo 
+#left-line, #right-line {
+    border: 2px solid orange;
+
+}
+.content-logo .col {
+    margin: 20px;
+}
+.modal .modal-body .container-log .content-logo .col-6 {
+    display: inline-flex;
+}
+
+.modal .modal-body .container-log .content-logo #title {
+    font-size: 20px;
+}
+
+.modal .modal-body .container-log .btn-submit {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.modal .modal-body .container-log .btn-log {
+    border: 1px solid orange;
+    border-radius: 10px;
+    color: white;
+    background-color: orange;
+    width: 45%;
+    padding: 4px;
+}
+
+.modal .modal-body .container-log .btn-log:hover {
+  border: 2px solid orange;
+  color: orange;
+  background-color: white;
+}
+
+.modal .modal-body .container-log .btn-log strong {
+    font-size: 16px;
+}
+
+.modal .modal-content strong {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    margin-top: -50px;
+    left: 27%;
+}
