@@ -95,7 +95,7 @@ function NuevoNoticia() {
             print_r($respuesta['resultado']);
             echo "</pre>";
         
-            //header("Location: /Literagiando/Views/NoticiasAdmin/index.php");
+            header("Location: /Literagiando/Views/NoticiasAdmin/index.php");
             exit;
         } else {
             echo "Error al guardar el registro";

@@ -106,69 +106,72 @@
 </html>
 
 <script>
-  $('#password').on('change', function () {
-    var password = $(this).val();
-    var regexLowercase = /[a-z]/;
-    var regexUppercase = /[A-Z]/;
-    var regexDigit = /\d/;
-    var regexSpecialChar = /[@#$%^&+=!]/;
-    var minLength = 8;
+  
+  $(document).ready(function() {
+    // Función para validar la contraseña
+    function validarContrasena() {
+      var password = $('#password').val();
+      var password2 = $('#password2').val();
+      var regexLowercase = /[a-z]/;
+      var regexUppercase = /[A-Z]/;
+      var regexDigit = /\d/;
+      var regexSpecialChar = /[@#$%^&+=!]/;
+      var minLength = 8;
 
-    var isValid = true;
-    var message = '';
+      var message = '';
+      var isValid = true;
 
-    if (!regexLowercase.test(password)) {
-      isValid = false;
-      message += 'Debe contener al menos una letra minúscula.\n';
+      if (!regexLowercase.test(password)) {
+        message += 'Debe contener al menos una letra minúscula.\n';
+        isValid = false;
+      }
+
+      if (!regexUppercase.test(password)) {
+        message += 'Debe contener al menos una letra mayúscula.\n';
+        isValid = false;
+      }
+
+      if (!regexDigit.test(password)) {
+        message += 'Debe contener al menos un dígito.\n';
+        isValid = false;
+      }
+
+      if (!regexSpecialChar.test(password)) {
+        message += 'Debe contener al menos un carácter especial (@#$%^&+=!).\n';
+        isValid = false;
+      }
+
+      if (password.length < minLength) {
+        message += 'Debe tener una longitud mínima de ' + minLength + ' caracteres.\n';
+        isValid = false;
+      }
+
+      if (password !== password2) {
+        message += 'Las contraseñas no coinciden.\n';
+        isValid = false;
+      }
+
+      $('#message').text(message).css('color', isValid ? 'green' : 'red');
+      return isValid;
     }
 
-    if (!regexUppercase.test(password)) {
-      isValid = false;
-      message += 'Debe contener al menos una letra mayúscula.\n';
-    }
+    // Evento submit del formulario
+    $('form').on('submit', function(event) {
+      var isValid = validarContrasena();
 
-    if (!regexDigit.test(password)) {
-      isValid = false;
-      message += 'Debe contener al menos un dígito.\n';
-    }
+      if (!isValid) {
+        event.preventDefault(); // Evitar que el formulario se envíe
+      }
+    });
+    $('#password').on('input', function () {
+      validarContrasena();
+    });
 
-    if (!regexSpecialChar.test(password)) {
-      isValid = false;
-      message += 'Debe contener al menos un carácter especial (@#$%^&+=!).\n';
-    }
-
-    if (password.length < minLength) {
-      isValid = false;
-      message += 'Debe tener una longitud mínima de ' + minLength + ' caracteres.\n';
-    }
-
-    if (isValid) {
-      $('#message').text('Contraseña válida').css('color', 'green');
-    } else {
-      $('#message').text(message).css('color', 'red');
-    }
-  });
-
-  $('#password2').on('change', function () {
-    var password = $(this).val();
-    var password2 = $('#password').val();
-
-
-    var isValid = true;
-    var message = '';
-
-    if (password2 != password) {
-      isValid = false;
-      message += 'Las contraseñas no coinciden.\n';
-    }
-    console.log(password, password2);
-
-    if (isValid) {
-      $('#message2').text('').css('color', 'green');
-    } else {
-      $('#message2').text(message).css('color', 'red');
-    }
+    $('#password2').on('input', function () {
+      validarContrasena();
+    });
   });
 </script>
+
 
 

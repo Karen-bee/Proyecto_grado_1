@@ -21,14 +21,17 @@ if (isset($_POST["btnSubmit"])) {
         $password = $_POST["password"];
 
         // Consulta preparada para prevenir inyección SQL
-        $stmt = $conexion->prepare("SELECT idrolusuario, password FROM usuario WHERE correo_usuario=?");
+        $stmt = $conexion->prepare("SELECT idrolusuario, password, estado FROM usuario WHERE correo_usuario=?");
         $stmt->bind_param("s", $correo_usuario);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($datos = $result->fetch_assoc()) {
-            // Verificar la contraseña utilizando password_verify
-            if (password_verify($password, $datos['password'])) {
+            if($datos['estado']!=1){
+                echo '<script>
+                    alert("Usuario inactivo");
+                    window.location= "/Literagiando/Views/Home/index.php"</script>';
+            }elseif (password_verify($password, $datos['password'])) {
                 session_start();
 
                 // Verificar si la sesión ya está iniciada

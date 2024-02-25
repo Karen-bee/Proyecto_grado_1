@@ -75,8 +75,14 @@ include 'create.php';
       // Imprimir valores de las celdas
       foreach ($titulo as $values) {
         echo '<tr>';
-        foreach ($values as $value) {
-          echo '<td><span>' . $value . '</span></td>';
+        foreach ($values as $columnName => $value) {
+          if($columnName == 'activo'){
+            echo '<td><span>' . ($value == '1' ?  "Sí" : "No") . '</span></td>';
+          }elseif($columnName == 'imagen'){
+            echo '<td><img src="'.$value.'" width=50 height=50 alt="Imagen del servicio"/></td>';
+          }else{
+            echo '<td><span>' . $value . '</span></td>';
+          }
         }
         echo '</tr>';
       }
@@ -178,6 +184,8 @@ include 'create.php';
         foreach ($values as $columnName => $value) {
           if($columnName == 'activo'){
             echo '<td><span>' . ($value == '1' ?  "Sí" : "No") . '</span></td>';
+          }elseif($columnName == 'imagen'){
+            echo '<td><img src="'.$value.'" width=50 height=50 alt="Imagen del servicio"/></td>';
           }else{
             echo '<td><span>' . $value . '</span></td>';
           }
@@ -272,7 +280,7 @@ include 'create.php';
 
                    
 
-                    if(nombreColumna == 'activo' || nombreColumna == 'Acción' ){
+                    if(nombreColumna == 'activo' || nombreColumna == 'Acción' ||  nombreColumna == 'imagen'){
                       //document.getElementById(nombreColumna).value = valorCelda;
                     }else{
                        // Obtener el valor de la celda
@@ -315,7 +323,7 @@ include 'create.php';
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Nombre</th>
-      <th scope="col">Rol</th>
+      <th scope="col">Cargo</th>
       <th scope="col">Facultad</th>
       <th scope="col">imagen</th>
       <th scope="col">accion</th>
@@ -327,7 +335,7 @@ include 'create.php';
     <tr>
       <td><?php echo $person['id']  ?></td>
       <td><?php echo $person['nombre'] ?></td>
-      <td><?php echo $person['rol'] ?></td>
+      <td><?php echo $person['cargo'] ?></td>
       <td><?php echo $person['facultad'] ?></td>
       <td><img src="<?php echo $person['imagen'] ?>" alt="Imagen"></td>
       <td>
@@ -366,11 +374,15 @@ function generarEditModal($idModal, $tituloModal, $accion, $tabla, $datosM) {
               <input type="text" name="tabla" value="<?php echo $tabla; ?>" hidden>
               <?php
               foreach ($datosM[0] as $columnName => $value) {
+                if (strpos($columnName, 'id_') !== false) {
+                  echo "<input type='text' id='$columnName' name='$columnName' class='form-control' value='$value' hidden>";
+                    continue;
+                }
                 $label = ucfirst(str_replace('_', ' ', $columnName));
                 echo "<div class='mb-3'><label for='$columnName' class='form-label'>$label</label>";
                 if ( $columnName == 'imagen') {
                   // Campo de archivo
-                  echo "<input type='file' class='form-control' name='$columnName'></div>";
+                  echo "<input type='file' class='form-control' name='$columnName'>";
                 } elseif ($columnName == 'activo'){
                   echo "&nbsp;&nbsp;";
                   echo '<input type="hidden" name="activo" value="0">';
@@ -381,11 +393,7 @@ function generarEditModal($idModal, $tituloModal, $accion, $tabla, $datosM) {
                   if ($inputType == 'textarea') {
                     echo "<textarea name='$columnName' id='$columnName' cols='30' rows='5' class='form-control' required>$value</textarea>";
                   } else {
-                    if (strpos($columnName, 'id_') !== false) {
-                      echo "<input type='$inputType' id='$columnName' name='$columnName' value='$value' class='form-control' readonly>";
-                    } else {
-                        echo "<input type='$inputType' id='$columnName' name='$columnName' class='form-control' value='$value' required>";
-                    }
+                    echo "<input type='$inputType' id='$columnName' name='$columnName' class='form-control' value='$value' required>";
                   }
                 }
                 echo "</div>";
@@ -393,7 +401,7 @@ function generarEditModal($idModal, $tituloModal, $accion, $tabla, $datosM) {
               ?>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="submit" class="btn butn-primary">Guardar</button>
               </div>
            
           </div>
@@ -420,10 +428,14 @@ function generarCreateModal($idModal, $tituloModal, $accion, $tabla, $datosM) {
             <input type="text" name="tabla" value="<?php echo $tabla; ?>" hidden>
             <?php
             foreach ($datosM[0] as $columnName => $value) {
+              if (strpos($columnName, 'id_') !== false) {
+                echo "<input type='text' id='$columnName' class='form-control' hidden>";
+                  continue;
+              }
               $label = ucfirst(str_replace('_', ' ', $columnName));
               echo "<div class='mb-3'><label for='$columnName' class='form-label'>$label</label>";
               if ( $columnName == 'imagen') {
-                
+                echo "<input type='file' class='form-control' name='$columnName'>";
               } elseif ($columnName == 'activo'){
                   echo "&nbsp;&nbsp;";
                   echo '<input type="hidden" name="activo" value="0">';
@@ -434,11 +446,7 @@ function generarCreateModal($idModal, $tituloModal, $accion, $tabla, $datosM) {
                 if ($inputType == 'textarea') {
                   echo "<textarea name='$columnName' id='$columnName' cols='30' rows='5' class='form-control' required></textarea>";
                 } else {
-                  if (strpos($columnName, 'id_') !== false) {
-                    echo "<input type='$inputType' id='$columnName' class='form-control' readonly>";
-                  } else {
-                      echo "<input type='$inputType' id='$columnName' name='$columnName' class='form-control' required>";
-                  }
+                    echo "<input type='$inputType' id='$columnName' name='$columnName' class='form-control' required>";
                 }
               }
               echo "</div>";
@@ -446,7 +454,7 @@ function generarCreateModal($idModal, $tituloModal, $accion, $tabla, $datosM) {
             ?>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="submit" class="btn btn-primary">Guardar</button>
+              <button type="submit" class="btn butn-primary">Guardar</button>
             </div>
          
         </div>

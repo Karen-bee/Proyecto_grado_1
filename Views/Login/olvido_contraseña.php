@@ -1,6 +1,6 @@
 <div class="modal fade" id="OlvidoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <form id="formEmail" method="post" action="Login/envio_correo.php">
+        <form id="formEmail" method="post" action="/Literagiando/Views/Login/envio_correo.php">
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="imgF">

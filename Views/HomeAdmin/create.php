@@ -17,8 +17,8 @@
             <input type="text" name="nombre" class="form-control" required>
         </div>
         <div class="col-12">
-            <label for="nombre_rol">Rol</label>
-            <input type="text" name="rol" class="form-control" required>
+            <label for="nombre_rol">Cargo</label>
+            <input type="text" name="cargo" class="form-control" required>
         </div>
         <div class="col-12">
             <label for="nombre_rol">Facultad</label>

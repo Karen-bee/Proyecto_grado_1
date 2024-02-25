@@ -8,7 +8,7 @@
     if($accion == null){
         $accion = $_POST['accion'];
     }
-    echo $accion;
+    //echo $accion;
 
     switch ($accion) {
         case 'nuevo':
@@ -198,7 +198,7 @@
             if($respuesta['state'] == true ) {
                 echo "Registro Editado";
                 
-                header("Location: /Literagiando/Views/UserAdmin/index.php");
+                header("Location: /Literagiando/Views/UserCard/perfil.php");
                 exit; // Add exit after header to stop script execution
             }
         }else{
@@ -372,6 +372,10 @@
                             alert('Error en los datos intentelo de nuevo.');window.history.go(-1);</script>";
             }          
 
+        }else{
+            $mensaje = "formulario incompleto form: " . $mensaje ;
+            // Imprimir el script de JavaScript que envía el mensaje a la consola
+            echo "<script>console.log('$mensaje');</script>";
         }
 
     }

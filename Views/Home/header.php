@@ -79,16 +79,22 @@
                     <a id="btnBlog" class="nav-link" href="/Literagiando/Views/Home/Blog/blogs.php"><strong>Blogs</strong></a>
                     </li>
                     <li class="nav-item dropdown">
-                    <a id="btnBiblioteca" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a id="btnBiblioteca" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <strong>Biblioteca</strong>
                     </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
                     </li>
 
                 </ul>
                 <?php if (!isset($idrolusuario)) { ?>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a id="btnIncioDeSesionVideo" class="nav-link modal-inicio" href="#" data-bs-toggle="modal" data-bs-target="#LoginModal">
+                            <a id="btnIncioDeSesionVideo" class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#LoginModal">
                                 <strong>Iniciar Sesión</strong> <i class='bx bx-user'></i>
                             </a>
                         </li>

@@ -8,7 +8,7 @@ if($sobre_nosotros['state']==true){
 ?>
 
 
-<div class="container-blog">
+<div class="container-blog" style="background-image: url(<?php echo $sobre_nosotros['imagen'];?>);" >
 <button id="btn-nosotros"><strong>Sobre Nosotros: <p><?php echo $sobre_nosotros['titulo_general'];?></p></strong></button>
 </div>
 

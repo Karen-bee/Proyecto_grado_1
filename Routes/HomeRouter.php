@@ -25,7 +25,7 @@ function EliminarPersona($id) {
 function NuevoEvento() {
     if (
         isset($_POST['nombre']) &&
-        isset($_POST['rol']) &&
+        isset($_POST['cargo']) &&
         isset($_POST['facultad'])
     ) {
         // Validar y filtrar datos según sea necesario
@@ -34,7 +34,7 @@ function NuevoEvento() {
 
         $datos = array(
             "nombre" => $_POST['nombre'],
-            "rol" => $_POST['rol'],
+            "cargo" => $_POST['cargo'],
             "facultad" => $_POST['facultad']
         );
 
@@ -143,6 +143,7 @@ function editarSobreNosotros($id) {
             echo "<pre>";
             print_r($respuesta['resultado']);
             print_r($datos);
+            print_r($_FILES);
             echo "</pre>";
             $pagina_anterior = $_SERVER['HTTP_REFERER'];
             header("Location: $pagina_anterior");

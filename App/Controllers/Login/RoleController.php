@@ -76,7 +76,7 @@ class RoleController {
         try {
             $resultados = $this->roleModel->NuevoRolModel($datos);
     
-            if ($resultados = "") {
+            if ($resultados != '' ) {
                 $this->respuesta = array(
                     "state" => true,
                     "mensaje" => $resultados

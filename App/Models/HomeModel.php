@@ -55,8 +55,8 @@ class HomeModel {
 
     
     public function NuevoSobre_nosotros($datos){
-        $consulta = "INSERT INTO Sobre_nosotros(nombre , rol, facultad, imagen) 
-        VALUES (:prm_nombre, :prm_rol, :prm_facultad, :imagen)";
+        $consulta = "INSERT INTO Sobre_nosotros(nombre , cargo, facultad, imagen) 
+        VALUES (:prm_nombre, :prm_cargo, :prm_facultad, :imagen)";
         
         $imageDirectory = '../../Literagiando/Storage/img-home/'; 
         $uploadedFile = $_FILES['imagen']['tmp_name'];
@@ -68,7 +68,7 @@ class HomeModel {
     
             $parametros = array(
                 "prm_nombre" => $datos['nombre'],
-                "prm_rol" => $datos['rol'],
+                "prm_cargo" => $datos['cargo'],
                 "prm_facultad" => $datos['facultad'],
                 "imagen" => substr($imageFilePath,2) 
             );
@@ -116,28 +116,28 @@ class HomeModel {
 
 
         $consulta = 'UPDATE  '. $tabla .' 
-        SET '. $consul .', imagen_banner = :imagen_banner WHERE '. $nombreID .' = :prm_idsobrenosotros';
+        SET '. $consul .', imagen = :imagen_banner WHERE '. $nombreID .' = :prm_idsobrenosotros';
         
 
         if(isset($_FILES['imagen'])){
-        $imageDirectory = '/Literagiando/Storage/img-home/'; 
-        $uploadedFile = $_FILES['imagen']['tmp_name'];
-        $imageFileName = $_FILES['imagen']['name'];
-        $imageFilePath = $imageDirectory . $imageFileName;
+            $imageDirectory = '../../Literagiando/Storage/img-home/'; 
+            $uploadedFile = $_FILES['imagen']['tmp_name'];
+            $imageFileName = $_FILES['imagen']['name'];
+            $imageFilePath = $imageDirectory . $imageFileName;
+            
         
-    
-        if (move_uploaded_file($uploadedFile, $imageFilePath)) {
-    
-            $parametros = array(
-                "prm_idsobrenosotros"=>$idDatos,
-                "imagen_banner" => substr($imageFilePath,2) 
-            );
-    
-            $respuesta = $this->conexion->EjecutarSPConParams($consulta, $parametros);
-            return $respuesta;
-        }else {
-            echo "no se pudo mover la imagen";
-        }
+            if (move_uploaded_file($uploadedFile, $imageFilePath)) {
+        
+                $parametros = array(
+                    "prm_idsobrenosotros"=>$idDatos,
+                    "imagen_banner" => substr($imageFilePath,2) 
+                );
+        
+                $respuesta = $this->conexion->EjecutarSPConParams($consulta, $parametros);
+                return $respuesta;
+            }else {
+                echo "no se pudo mover la imagen";
+            }
         } else {
             echo "no hay imagen";
         }
@@ -181,6 +181,28 @@ class HomeModel {
 
         $consulta = 'INSERT INTO  `'. $tabla.'` ('.$consul1.') VALUES ('.$consul2.')';
         
+
+        if(isset($_FILES['imagen'])){
+            $imageDirectory = '../../Literagiando/Storage/img-home/'; 
+            $uploadedFile = $_FILES['imagen']['tmp_name'];
+            $imageFileName = $_FILES['imagen']['name'];
+            $imageFilePath = $imageDirectory . $imageFileName;
+            
+        
+            if (move_uploaded_file($uploadedFile, $imageFilePath)) {
+                $consulta = 'INSERT INTO  `'. $tabla.'` ('.$consul1.', imagen) VALUES ('.$consul2.'  , :imagen )';
+                $parametros = array(
+                    "imagen" => substr($imageFilePath,2) 
+                );
+                echo $consulta;
+                $respuesta = $this->conexion->EjecutarSPConParams($consulta, $parametros);
+                return $respuesta;
+            }else {
+                echo "no se pudo mover la imagen";
+            }
+        } else {
+            echo "no hay imagen";
+        }
 
         $respuesta = $this->conexion->EjecutarSPSinParams($consulta);
         return $respuesta;

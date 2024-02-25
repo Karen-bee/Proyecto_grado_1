@@ -33,11 +33,10 @@ if ($idevento !== null) {
 
 $timestamp = strtotime($evento[0]['fecha_evento']);
 
-
-
+date_default_timezone_set('UTC');
+$hora = date(' H:i', $timestamp + 3600);
 $fechaFormateada = strftime('%A , %e de %B %Y', $timestamp);
 $fechaFormateada = gmdate('l, j \x F Y', $timestamp);
-$hora = gmdate(' H:i', $timestamp);
 $fechaFormateada = str_replace('x', 'de', $fechaFormateada);
 $fechaFormateada = strtr($fechaFormateada, array_merge($meses, $dias));
 

@@ -8,7 +8,11 @@ $arrayDividido = $homeController->ObtenerServiciosController();
 if($arrayDividido['state'] === true){
     $arrayDividido = $arrayDividido['sobre_nosotros'];
 }
-
+foreach ($arrayDividido as $key => $values) {
+    if (isset($values['activo']) && $values['activo'] == '0') {
+        unset($arrayDividido[$key]);
+    }
+}
 ?>
 
 
@@ -25,7 +29,7 @@ if($arrayDividido['state'] === true){
                 <h5 class="card-title"><?php echo $titulo['tipo_servicios'];?></h5>
                 <p class="card-text"><?php echo $titulo['detalle_servicio'];?></p>
             </div>
-            <img src="/Literagiando/Resources/img/Libro.png" class="card-img-top" alt="">
+            <img src="<?php echo $titulo['imagen'];?>" class="card-img-top" alt="">
         </div>
     <?php  $i++;}?>
 

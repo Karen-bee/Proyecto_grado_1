@@ -9,7 +9,11 @@ $arrayDividido = $homeController->ObtenerObjetivosController();
 if($arrayDividido['state'] === true){
     $arrayDividido = $arrayDividido['sobre_nosotros'];
 }
-
+foreach ($arrayDividido as $key => $values) {
+    if (isset($values['activo']) && $values['activo'] == '0') {
+        unset($arrayDividido[$key]);
+    }
+}
 ?>
 
 

@@ -96,7 +96,6 @@ class RolRouter {
     
 
     private function nuevoRol() {
-        echo "se ejecuto";
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $datos = array(
                 "nombre_rol" => $_POST["nombre_rol"],
@@ -105,12 +104,11 @@ class RolRouter {
             $resultado = $this->roleController->NuevoRolController($datos);
 
             if ($resultado['state'] == true) {
-                $pagina_anterior = $_server['http_referer'];
-                header("location: $pagina_anterior");
+                echo "<script>window.location.href = '/Literagiando/Views/Roles/index.php'</script>";
             } else {
                 echo "Error al agregar el rol.";
                 echo $resultado['mensaje'];
-                echo "<script>alert('Error al ingresar rol');window.location.href =  '/Literagiando/Views/Roles/index.php'</script>";
+                echo "<script>alert('Error al ingresar rol".$resultado['mensaje']."');window.location.href =  '/Literagiando/Views/Roles/index.php'</script>";
             }
         }else{
             echo "No post";

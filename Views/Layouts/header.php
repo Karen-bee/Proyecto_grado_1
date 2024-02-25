@@ -29,7 +29,7 @@ function formatfecha($fe){
   global $meses;
   global $dias;
   $timestamp = strtotime($fe);
-  $fechaFormateada = strftime('%A , %e de %B %Y', $timestamp);
+  $fechaFormateada = strftime('%A, %e de %B %Y %H:%M', $timestamp);
   $fechaFormateada = strtr($fechaFormateada, array_merge($meses, $dias));
   
   return $fechaFormateada;
