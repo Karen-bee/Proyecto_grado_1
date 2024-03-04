@@ -45,17 +45,17 @@
                         <p>Asegurese de que las contraseñas
                             coincidan.</p>
                         <div class="mb-3">
-                            <input type="hidden" class="form-control" id="correo_usuario" name="correo_usuario" placeholder="Email">
+                            <input type="hidden" class="form-control" id="correo" name="correo" placeholder="Email">
                         </div>
                         <div class="mb-3">
-                            <label for="password" class="form-label">Nueva contraseña</label>
+                            <label for="password" class="form-label ">Nueva contraseña</label>
                             <input type="password" class="form-control" id="nueva_contraseña" name="nueva_contraseña" placeholder="Ingrese la contraseña">
-                            <span  id="message" class="error"></span><br>
+                            <span  id="message" class="error limitar-span"></span><br>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Confirmacion de contraseña</label>
                             <input type="password" class="form-control" id="confirmar_contraseña" name="confirmar_contraseña" placeholder="Conforme su contraseña">
-                            <span  id="message2" class="error"></span><br>
+                            <span  id="message2" class="error limitar-span"></span><br>
 
                             <a class="enlace1" href="/Literagiando/Views/Home/index.php">Volver a inicio de sesión</a>
                         </div>

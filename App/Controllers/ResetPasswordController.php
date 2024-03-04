@@ -19,7 +19,7 @@ function validarContrasena($contrasena) {
 
 if (isset($_POST["reset_password"]) && isset($_GET["email_consulta"])) {
 
-    //$correo_usuario = $_POST["correo_usuario"];
+    //$correo = $_POST["correo"];
     $nueva_contraseña = $_POST["nueva_contraseña"];
     $confirmar_contraseña = $_POST["confirmar_contraseña"];
         // Validación de contraseñas
@@ -62,7 +62,7 @@ if (isset($_POST["reset_password"]) && isset($_GET["email_consulta"])) {
     $emailConsulta = isset($params['email_consulta']) ? $params['email_consulta'] : '';
 
     // Consultar si el usuario existe
-    $sql = "SELECT * FROM usuario WHERE correo_usuario = '$emailConsulta'";
+    $sql = "SELECT * FROM usuario WHERE correo = '$emailConsulta'";
     $resultado_email = mysqli_query($conexion, $sql);
     $cant_duplicidad = mysqli_num_rows($resultado_email);
 
@@ -71,7 +71,7 @@ if (isset($_POST["reset_password"]) && isset($_GET["email_consulta"])) {
         $hashedPassword = password_hash($nueva_contraseña, PASSWORD_BCRYPT);
 
 
-        $sql_edit_computer = "UPDATE usuario SET password = '$hashedPassword', Fecha_registro = NOW() WHERE correo_usuario = '$emailConsulta'";
+        $sql_edit_computer = "UPDATE usuario SET password = '$hashedPassword', Fecha_registro = NOW() WHERE correo = '$emailConsulta'";
         $resultTotalEdit_computer = $conexion->query($sql_edit_computer);
 
         if ($resultTotalEdit_computer) {

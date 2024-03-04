@@ -6,7 +6,7 @@ $eventoController = new EventoController();
 include '../Layouts/header.php';
 
 
-$eventos = $eventoController->ObtenerMisEventosController($row['idusuario']);
+$eventos = $eventoController->ObtenerMisEventosController($row['id_usuario']);
 
 
 if($eventos['state']==1){
@@ -55,7 +55,7 @@ function actualizarPaginacion($totalPaginas,$paginaActual) {
 if (isset($_POST["idEvento"])) {
 
   if(isset($_POST["accion"])){
-    desinscribirEvento($row['idusuario'], $_POST["idEvento"],$_POST["accion"]);
+    desinscribirEvento($row['id_usuario'], $_POST["idEvento"],$_POST["accion"]);
     
   }
 } 
@@ -103,7 +103,7 @@ if (isset($_POST["idEvento"])) {
       <td>
         <form action="" method="POST">
           <input type="hidden" name="idEvento" value="<?php echo $evento['ideventos']; ?>">
-          <input type="hidden" name="idusuario" value="<?php echo $row['idusuario']; ?>">
+          <input type="hidden" name="id_usuario" value="<?php echo $row['id_usuario']; ?>">
           <input type="hidden" name="accion" value="<?php echo $evento['asiste']; ?>">
           <input type="checkbox" class="isActive" onclick="this.form.submit()" <?php echo $evento['asiste'] === 'si' ? 'checked' : ''; ?>>
           <?php echo $evento['asiste']; ?>
@@ -112,7 +112,7 @@ if (isset($_POST["idEvento"])) {
       <td>
         <form action="" method="POST">
           <input type="hidden" name="idEvento" value="<?php echo $evento['ideventos']; ?>">
-          <input type="hidden" name="idusuario" value="<?php echo $row['idusuario']; ?>">
+          <input type="hidden" name="id_usuario" value="<?php echo $row['id_usuario']; ?>">
           <input type="hidden" name="accion" value="borrar">
           <button type="submit" class="btn btn-outline-danger btn-sm"><i class='bx bx-trash'></i></button>
         </form>

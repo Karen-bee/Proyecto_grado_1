@@ -24,8 +24,8 @@ if($busqueda){
   $searchTerm = strtolower($busqueda); // Convertir el término de búsqueda a minúsculas
 
   $resultados = array_filter($users, function ($user) use ($searchTerm) {
-      $nombreUser = strtolower($user['nombrecompleto_usuario']);
-      $detalleUser = strtolower($user['username']);
+      $nombreUser = strtolower($user['nombre_completo']);
+      $detalleUser = strtolower($user['usuario']);
 
       return strpos($nombreUser, $searchTerm) !== false || 
             strpos($detalleUser, $searchTerm) !== false;
@@ -103,54 +103,54 @@ include '../UserAdmin/editRol.php';
             <tbody>
               <?php foreach ($users as $user) { ?>
               <tr>
-              <td><?php echo $user['idusuario'] ?></td>
-                <td><?php echo $user['documento_usuario'] ?></td>
+              <td><?php echo $user['id_usuario'] ?></td>
+                <td><?php echo $user['identificacion'] ?></td>
                 <td><?php echo $user['nombre_documento'] ?></td>
-                <td><?php echo $user['nombrecompleto_usuario'] ?></td>
+                <td><?php echo $user['nombre_completo'] ?></td>
                 <td><?php echo $user['direccion_usuario'] ?></td>
-                <td><?php echo $user['telefono_usuario'] ?></td>
-                <td><?php echo $user['username'] ?></td>
-                <td><?php echo $user['correo_usuario'] ?></td>
+                <td><?php echo $user['telefono'] ?></td>
+                <td><?php echo $user['usuario'] ?></td>
+                <td><?php echo $user['correo'] ?></td>
                 <td><?php echo $user['nombre_rol']." " ?>
-                <a data-id="<?php echo $user['idusuario']; ?>" href="/Literagiando/Routes/UserRouter.php" class="btn btn-outline-dark btn-sm btn-editar-rol" data-bs-toggle="modal" data-bs-target="#EditRol"><i class='bx bxs-edit' ></i></a>  
+                <a data-id="<?php echo $user['id_usuario']; ?>" href="/Literagiando/Routes/UserRouter.php" class="btn btn-outline-dark btn-sm btn-editar-rol" data-bs-toggle="modal" data-bs-target="#EditRol"><i class='bx bxs-edit' ></i></a>  
                </td>
                 <td><form action="/Literagiando/Routes/UserRouter.php" method="POST">
-                        <input type="hidden" name="idUser" value="<?php echo $user['idusuario']; ?>">
+                        <input type="hidden" name="idUser" value="<?php echo $user['id_usuario']; ?>">
                         <input type="hidden" name="estado" value="<?php echo $user['estado']; ?>">
                         <input type="hidden" name="accion" value="activarUser">
                         <input type="checkbox" class="isActive" onclick="this.form.submit()" <?php echo $user['estado'] === 1 ? 'checked' : ''; ?>>
                         <?php echo $user['estado']; ?>
                     </form>
                 <td>  
-                  <a data-id="<?php echo $user['idusuario']; ?>" href="/Literagiando/Routes/UserRouter.php" class="btn btn-outline-dark btn-sm btn-editar-user" data-bs-toggle="modal" data-bs-target="#EditUser"><i class='bx bxs-edit' ></i></a>
+                  <a data-id="<?php echo $user['id_usuario']; ?>" href="/Literagiando/Routes/UserRouter.php" class="btn btn-outline-dark btn-sm btn-editar-user" data-bs-toggle="modal" data-bs-target="#EditUser"><i class='bx bxs-edit' ></i></a>
                 </td>
                 <script>
                   // Asignar user de clic al botón de editar
-                  $(`.btn-editar-rol[data-id=<?php echo $user['idusuario']; ?>]`).on('click', function() {
+                  $(`.btn-editar-rol[data-id=<?php echo $user['id_usuario']; ?>]`).on('click', function() {
                       llenarFormularioRol(<?php echo json_encode($user); ?>);
                   });
                   // Asignar user de clic al botón de editar
-                  $(`.btn-editar-user[data-id=<?php echo $user['idusuario']; ?>]`).on('click', function() {
+                  $(`.btn-editar-user[data-id=<?php echo $user['id_usuario']; ?>]`).on('click', function() {
                       llenarFormularioUser(<?php echo json_encode($user); ?>);
                   });
                   // Función para llenar el formulario con los datos de la user
                   function llenarFormularioUser(user) {
                     userSelected = user;
                     console.log(userSelected); 
-                    $('#Documento_usuario').val(user.documento_usuario).trigger('change'); 
-                    $('#Nombrecompleto_usuario').val(user.nombrecompleto_usuario); 
+                    $('#Identificacion').val(user.identificacion).trigger('change'); 
+                    $('#Nombre_completo').val(user.nombre_completo); 
                     $('#Direccion_usuario').val(user.direccion_usuario); 
-                    $('#Telefono_usuario').val(user.telefono_usuario); 
-                    $('#Username').val(user.username); 
-                    $('#Correo_usuario').val(user.correo_usuario); 
+                    $('#Telefono_usuario').val(user.telefono); 
+                    $('#Username').val(user.usuario); 
+                    $('#Correo').val(user.correo); 
                     $('#Idtipodedocumento').val(user.idtipodedocumento); 
-                    $('#Idusuario').val(user.idusuario); 
+                    $('#Id_usuario').val(user.id_usuario); 
                     $('#password').val(user.password); 
                   }    
                   function llenarFormularioRol(user) {
                     userSelected = user;
                     console.log(userSelected); 
-                    $('#Idusuarioo').val(user.idusuario); 
+                    $('#Id_usuarioo').val(user.id_usuario); 
                   } 
                 </script>
               </tr>

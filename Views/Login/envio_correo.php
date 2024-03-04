@@ -75,7 +75,7 @@ if (isset($_POST["Enviar_correo"])) {
     }
 
     $email_consulta = $_POST['correo'];
-    $consultaEmail = "SELECT * FROM usuario WHERE correo_usuario LIKE '%$email_consulta%'";
+    $consultaEmail = "SELECT * FROM usuario WHERE correo LIKE '%$email_consulta%'";
 
     $stmt = $conexion->prepare($consultaEmail);
     $stmt->execute();
@@ -188,7 +188,7 @@ if (isset($_POST["Enviar_correo"])) {
                 //echo "Correo enviado con éxito";
             } else {
                 echo $mail;
-                echo "<script language='javascript'>
+                echo "<script>
                     alert('Mensaje enviado, muchas gracias.');
                     window.history.go(-1);                    </script>";
 

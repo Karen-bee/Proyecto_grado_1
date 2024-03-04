@@ -12,17 +12,17 @@ if ($conexion->connect_error) {
 }
 
 if (isset($_POST["btnSubmit"])) {
-    if (empty($_POST["correo_usuario"]) || empty($_POST["password"])) {
+    if (empty($_POST["correo"]) || empty($_POST["password"])) {
         echo '<script>
                 alert("CAMPO E-MAIL O CONTRASEÑA VACÍO");
                 window.location= "/Literagiando/Views/Home/index.php"</script>';
     } else {
-        $correo_usuario = $_POST["correo_usuario"];
+        $correo = $_POST["correo"];
         $password = $_POST["password"];
 
         // Consulta preparada para prevenir inyección SQL
-        $stmt = $conexion->prepare("SELECT idrolusuario, password, estado FROM usuario WHERE correo_usuario=?");
-        $stmt->bind_param("s", $correo_usuario);
+        $stmt = $conexion->prepare("SELECT rol, password, estado, id_usuario FROM usuario WHERE correo=?");
+        $stmt->bind_param("s", $correo);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -36,12 +36,16 @@ if (isset($_POST["btnSubmit"])) {
 
                 // Verificar si la sesión ya está iniciada
                 if (isset($_SESSION['correo'])) {
+				    $_SESSION["id_usuario"] = $datos["id_usuario"];
+
                     echo '<script>
                             alert("Bienvenid@ de vuelta");
                             window.location= "/Literagiando/Views/Dashboard.php"</script>';
                 } else {
-                    $_SESSION['correo'] = $correo_usuario;
-                    $rol = $datos['idrolusuario'];
+                    $_SESSION['correo'] = $correo;
+				    $_SESSION["id_usuario"] = $datos["id_usuario"];
+
+                    $rol = $datos['rol'];
 
                     // Validar el rol y redirigir según sea necesario
                     $url = "/Literagiando/Views/Dashboard.php";
@@ -69,8 +73,8 @@ function obtenerDatos($correoU) {
     $correo = $_SESSION['correo'];
     global $conexion;
 
-    // Consulta el idrolusuario y otros datos del usuario actual
-    $sql = "SELECT usuario.* , roles.nombre_rol  FROM usuario JOIN roles  ON roles.idrol = usuario.idrolusuario WHERE correo_usuario = ?";
+    // Consulta el rol y otros datos del usuario actual
+    $sql = "SELECT usuario.* , roles.nombre_rol  FROM usuario JOIN roles  ON roles.idrol = usuario.rol WHERE correo = ?";
     $stmt = $conexion->prepare($sql);
 
     if ($stmt) {
@@ -82,8 +86,8 @@ function obtenerDatos($correoU) {
         if ($result) {
             $row = $result->fetch_assoc();
 
-            // Obtiene el idrolusuario
-            $idrolusuario = $row['idrolusuario'];
+            // Obtiene el rol
+            $rol = $row['rol'];
 
             // También puedes obtener otros campos si es necesario
             // $otrosCampos = $row['otros_campos'];
@@ -142,15 +146,15 @@ function obtenerPaginas() {
     return $paginas;
 }
 
-function inscribirEvento($idUsuario, $idEvento) {
+function inscribirEvento($id_usuario, $idEvento) {
     global $conexion;
 
-    $sql = "INSERT INTO `asistencia_eventos` (`ideventos`, `idusuario`) VALUES (?, ?)";
+    $sql = "INSERT INTO `asistencia_eventos` (`ideventos`, `id_usuario`) VALUES (?, ?)";
     
     try {
         $stmt = $conexion->prepare($sql);
         if ($stmt) {
-            $stmt->bind_param("ii", $idEvento, $idUsuario);
+            $stmt->bind_param("ii", $idEvento, $id_usuario);
             $stmt->execute();
 
             if ($stmt->affected_rows > 0) {
@@ -167,23 +171,23 @@ function inscribirEvento($idUsuario, $idEvento) {
     }
 }
 
-function desinscribirEvento($idUsuario, $idEvento, $asistencia) {
+function desinscribirEvento($id_usuario, $idEvento, $asistencia) {
     global $conexion;
 
 
     if ($asistencia == "borrar") {
-        $query = "DELETE FROM asistencia_eventos WHERE ideventos=? AND idusuario=?";
+        $query = "DELETE FROM asistencia_eventos WHERE ideventos=? AND id_usuario=?";
     } elseif ($asistencia == "si") {
-        $query = "UPDATE asistencia_eventos SET asiste ='no' WHERE ideventos=? AND idusuario=?";
+        $query = "UPDATE asistencia_eventos SET asiste ='no' WHERE ideventos=? AND id_usuario=?";
     } else {
-        $query = "UPDATE asistencia_eventos SET asiste ='si' WHERE ideventos=? AND idusuario=?";
+        $query = "UPDATE asistencia_eventos SET asiste ='si' WHERE ideventos=? AND id_usuario=?";
     }
 
     $sql = $query;
     $stmt = $conexion->prepare($sql);
 
     if ($stmt) {
-        $stmt->bind_param("ii", $idEvento, $idUsuario);
+        $stmt->bind_param("ii", $idEvento, $id_usuario);
         $stmt->execute();
 
         // Verifica si la inserción fue exitosa

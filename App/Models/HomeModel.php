@@ -41,9 +41,9 @@ class HomeModel {
     }
 
     public function ObtenerSobre_nosotrosPorId($idSobre_nosotros){
-        $consulta = "SELECT e.*, te.tipo_sobre_nosotros AS tipoSobre_nosotros, usuario.nombrecompleto_usuario as usuarioN
+        $consulta = "SELECT e.*, te.tipo_sobre_nosotros AS tipoSobre_nosotros, usuario.nombre_completo as usuarioN
         FROM Sobre_nosotros e
-        LEFT JOIN tipoSobre_nosotros te ON e.idtipo_Sobre_nosotros = te.idtipo_Sobre_nosotros JOIN usuario ON usuario.idusuario = e.idusuario WHERE idSobre_nosotros = :prm_idSobre_nosotros";
+        LEFT JOIN tipoSobre_nosotros te ON e.idtipo_Sobre_nosotros = te.idtipo_Sobre_nosotros JOIN usuario ON usuario.id_usuario = e.id_usuario WHERE idSobre_nosotros = :prm_idSobre_nosotros";
         $parametros = array(
             "prm_idSobre_nosotros"=>$idSobre_nosotros
         );

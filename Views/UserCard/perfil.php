@@ -14,10 +14,10 @@
 
             <div class="content-info">
                 <div class="foto">
-                    <img src=<?php  echo $row['foto_usuario']?> alt="Foto de perfil">
+                    <img src=<?php  echo $row['foto_perfil']?> alt="Foto de perfil">
                 </div>
                 <div class="info">
-                    <strong><?php  echo $row['nombrecompleto_usuario']?></strong>
+                    <strong><?php  echo $row['nombre_completo']?></strong>
                     <h4><?php  echo $row['nombre_rol']?></h4>
                     <div class="btn-info">
                         
@@ -26,10 +26,10 @@
                     </div>
                     <div id="panelSubirImagen" style="display: none;">
                         <form class="perfil-form" action="/Literagiando/Routes/UserRouter.php" method="POST" enctype="multipart/form-data">
-                            <input type="file" name="foto_usuario" id="imagen" accept="image/*">
+                            <input type="file" name="foto_perfil" id="imagen" accept="image/*">
                             <button id="subirImage"type="submit">Subir Imagen</button>
                             <input type="text" name="accion" value="editarFoto" hidden>
-                            <input type="text" name="idusuario" value="<?php echo $row['idusuario']; ?>" hidden>
+                            <input type="text" name="id_usuario" value="<?php echo $row['id_usuario']; ?>" hidden>
                         </form>
                     </div>
                     <script>
@@ -61,17 +61,17 @@
             <form class="perfil-form" action="/Literagiando/Routes/UserRouter.php" method="POST">
                 <div class="displ-block">
                     <span>Email</span>
-                    <input class="inputsTxt" type="text" name="correo_usuario" value="<?php echo $row['correo_usuario']; ?>" readonly>
+                    <input class="inputsTxt" type="text" name="correo" value="<?php echo $row['correo']; ?>" readonly>
                 </div>
 
                 <div class="displ-block">
                     <span>Telefono</span>
-                    <input class="inputsTxt" type="number" name="telefono_usuario" value="<?php echo $row['telefono_usuario']; ?>">
+                    <input class="inputsTxt" type="number" name="telefono" value="<?php echo $row['telefono']; ?>">
                 </div>
 
                 <div class="displ-block">
                     <span>Nombre Completo</span>
-                    <input class="inputsTxt" type="text" name="nombrecompleto_usuario" value="<?php echo $row['nombrecompleto_usuario']; ?>">
+                    <input class="inputsTxt" type="text" name="nombre_completo" value="<?php echo $row['nombre_completo']; ?>">
                 </div>
 
                 <div class="displ-block">
@@ -81,7 +81,7 @@
 
                 <div class="displ-block">
                     <span>Documento</span>
-                    <input class="inputsTxt" type="text" name="documento_usuario" id="Documento" value="<?php echo $row['documento_usuario']; ?>" readonly>
+                    <input class="inputsTxt" type="text" name="identificacion" id="Documento" value="<?php echo $row['identificacion']; ?>" readonly>
                 </div>
 
                 <div class="displ-block">
@@ -92,8 +92,8 @@
                 <div style="display: flex;">
                     <button type="submit" class="btn-save">Editar</button>
                     <input type="text" name="accion" value="editarPerfil" hidden>
-                    <input type="text" name="username" value="<?php echo $row['username']; ?>" hidden>
-                    <input type="text" name="idusuario" value="<?php echo $row['idusuario']; ?>" hidden>
+                    <input type="text" name="usuario" value="<?php echo $row['usuario']; ?>" hidden>
+                    <input type="text" name="id_usuario" value="<?php echo $row['id_usuario']; ?>" hidden>
                 </div>
 
                 <div style="display: flex;">

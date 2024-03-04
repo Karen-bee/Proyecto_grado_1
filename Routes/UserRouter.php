@@ -50,13 +50,13 @@
 
         if(
             isset($_POST['idrol']) &&
-            isset($_POST['idusuario'])
+            isset($_POST['id_usuario'])
         ){
             $rol = $_POST['idrol'];
-            $id_User = $_POST['idusuario'];
+            $id_User = $_POST['id_usuario'];
             
             $datos = array(
-                "idusuario" => $id_User,
+                "id_usuario" => $id_User,
                 "idrol" => $rol
             );
             
@@ -94,7 +94,7 @@
             $id_User = $_POST['idUser'];
             
             $datos = array(
-                "idusuario" => $id_User,
+                "id_usuario" => $id_User,
                 "estado" => $activo
             );
             
@@ -119,15 +119,15 @@
         
         $mensaje = json_encode($_POST);
     
-        if(isset($_POST['documento_usuario'])
-            && isset($_POST['nombrecompleto_usuario'])
+        if(isset($_POST['identificacion'])
+            && isset($_POST['nombre_completo'])
             && isset($_POST['direccion_usuario'])
-            && isset($_POST['telefono_usuario'])
-            && isset($_POST['username'])
-            && isset($_POST['correo_usuario'])
+            && isset($_POST['telefono'])
+            && isset($_POST['usuario'])
+            && isset($_POST['correo'])
             && isset($_POST['password'])
             && isset($_POST['idtipodedocumento'])
-            && isset($_POST['idusuario'])){
+            && isset($_POST['id_usuario'])){
 
 
                 if($_POST['password'] !== $_POST['password1']){
@@ -140,16 +140,16 @@
                 }
             
             $datos = array(
-                "documento_usuario" => $_POST['documento_usuario'],
-                "nombrecompleto_usuario" => $_POST['nombrecompleto_usuario'],
+                "identificacion" => $_POST['identificacion'],
+                "nombre_completo" => $_POST['nombre_completo'],
                 "direccion_usuario" => $_POST['direccion_usuario'],
-                "telefono_usuario" => $_POST['telefono_usuario'],
-                "username" => $_POST['username'],
-                "correo_usuario" => $_POST['correo_usuario'],
+                "telefono" => $_POST['telefono'],
+                "usuario" => $_POST['usuario'],
+                "correo" => $_POST['correo'],
                 "password" => $_POST['password'],
                 "password_actual" => $_POST['password_actual'],
                 "idtipodedocumento" => $_POST['idtipodedocumento'],
-                "idusuario" => $_POST['idusuario']
+                "id_usuario" => $_POST['id_usuario']
             );    
     
             $respuesta = $userController->ModificarUsersController($datos );
@@ -173,22 +173,22 @@
         $mensaje = json_encode($_POST);
         
     
-        if(isset($_POST['documento_usuario'])
-            && isset($_POST['nombrecompleto_usuario'])
+        if(isset($_POST['identificacion'])
+            && isset($_POST['nombre_completo'])
             && isset($_POST['direccion_usuario'])
-            && isset($_POST['telefono_usuario'])
-            && isset($_POST['correo_usuario'])
-            && isset($_POST['username'])
-            && isset($_POST['idusuario'])){
+            && isset($_POST['telefono'])
+            && isset($_POST['correo'])
+            && isset($_POST['usuario'])
+            && isset($_POST['id_usuario'])){
             
             $datos = array(
-                "documento_usuario" => $_POST['documento_usuario'],
-                "nombrecompleto_usuario" => $_POST['nombrecompleto_usuario'],
+                "identificacion" => $_POST['identificacion'],
+                "nombre_completo" => $_POST['nombre_completo'],
                 "direccion_usuario" => $_POST['direccion_usuario'],
-                "telefono_usuario" => $_POST['telefono_usuario'],
-                "username" => $_POST['username'],
-                "correo_usuario" => $_POST['correo_usuario'],
-                "idusuario" => $_POST['idusuario']
+                "telefono" => $_POST['telefono'],
+                "usuario" => $_POST['usuario'],
+                "correo" => $_POST['correo'],
+                "id_usuario" => $_POST['id_usuario']
             );    
     
             $userController = new UserController();
@@ -215,14 +215,14 @@
         $mensaje = json_encode($_POST);
 
         // Verificamos si se ha enviado un archivo
-        if (isset($_FILES['foto_usuario'])) {
+        if (isset($_FILES['foto_perfil'])) {
             $ruta_destino = "../../Literagiando/Resources/img/users/"; // Reemplaza con la ruta deseada
 
             // Obtenemos información del archivo
-            $nombre_archivo = $_FILES['foto_usuario']['name'];
-            $tipo_archivo = $_FILES['foto_usuario']['type'];
-            $tamano_archivo = $_FILES['foto_usuario']['size'];
-            $temp_archivo = $_FILES['foto_usuario']['tmp_name'];
+            $nombre_archivo = $_FILES['foto_perfil']['name'];
+            $tipo_archivo = $_FILES['foto_perfil']['type'];
+            $tamano_archivo = $_FILES['foto_perfil']['size'];
+            $temp_archivo = $_FILES['foto_perfil']['tmp_name'];
 
             // Creamos una ruta única para evitar posibles conflictos de nombres
             //$ruta_final = $ruta_destino . uniqid() . "_" . $nombre_archivo;
@@ -241,11 +241,11 @@
             echo "No se ha seleccionado ninguna imagen.";
         }
 
-        if( isset($_POST['idusuario'])){
+        if( isset($_POST['id_usuario'])){
                 
             $datos = array(
-                "foto_usuario" => $ruta_fin,
-                "idusuario" => $_POST['idusuario']
+                "foto_perfil" => $ruta_fin,
+                "id_usuario" => $_POST['id_usuario']
             );    
     
             $respuesta = $userController->ModificarUsersController($datos );
@@ -270,31 +270,33 @@
     {
         $userController = new RegisterController();
 
-        if(isset($_POST['documento_usuario'])
-            && isset($_POST['nombrecompleto_usuario'])
+        if(isset($_POST['identificacion'])
+            && isset($_POST['nombre_completo'])
             && isset($_POST['direccion_usuario'])
-            && isset($_POST['telefono_usuario'])
-            && isset($_POST['username'])
-            && isset($_POST['correo_usuario'])
+            && isset($_POST['telefono'])
+            && isset($_POST['usuario'])
+            && isset($_POST['correo'])
             && isset($_POST['password'])
             && isset($_POST['idtipodedocumento'])){
 
             //creamos arreglo de datos
             $datos = array(
-                "documento_usuario" => $_POST['documento_usuario'],
-                "nombrecompleto_usuario" => $_POST['nombrecompleto_usuario'],
+                "identificacion" => $_POST['identificacion'],
+                "nombre_completo" => $_POST['nombre_completo'],
                 "direccion_usuario" => $_POST['direccion_usuario'],
-                "telefono_usuario" => $_POST['telefono_usuario'],
-                "username" => $_POST['username'],
-                "correo_usuario" => $_POST['correo_usuario'],
+                "telefono" => $_POST['telefono'],
+                "usuario" => $_POST['usuario'],
+                "correo" => $_POST['correo'],
                 "password" => $_POST['password'],
                 "idtipodedocumento" => $_POST['idtipodedocumento']
             );
 
             $respuesta = $userController->NuevoUserController($datos);
             
+
+            
            
-            if($respuesta['state']==true){
+            if($respuesta['state']=='true'){
 
                 $miDisenoHTML1 = '<!DOCTYPE html>
                     <html lang="es">en">       
@@ -352,30 +354,31 @@
                         </body>
                 </html>';
                 // Correo
-                $to1 =  $_POST['correo_usuario'];
+                $to1 =  $_POST['correo'];
                 $subject1 = "Literagiando - Registro de Cuenta";
                 $headers1 = "Content-type:text/html;charset=UTF-8" . "\r\n";
                 $message1 = $miDisenoHTML1;
 
                     $mail = mail($to1,$subject1,$message1,$headers1);
                     if ($mail) {
-                        echo "<script language='javascript'>
-                            alert('Mensaje enviado, muchas gracias por registrarte.');window.location= '/Literagiando/Views/Home/index.php'";
+                        echo "<script>
+                            alert('Mensaje enviado, muchas gracias por registrarte.');window.location= '/Literagiando/Views/Home/index.php';</script>";
                         //echo "Correo enviado con éxito";
                     } else {
                         echo $mail;
-                        echo "<script language='javascript'>
-                        window.location= '/Literagiando/Views/Home/index.php'";
+                        echo "<script> window.location= '/Literagiando/Views/Home/index.php';</script>";
                     }
             }else{
-                echo "<script language='javascript'>
-                            alert('Error en los datos intentelo de nuevo.');window.history.go(-1);</script>";
+                echo "<script> alert('" . addslashes($respuesta['mensaje']) . "'); window.history.go(-1);</script>";
             }          
 
         }else{
-            $mensaje = "formulario incompleto form: " . $mensaje ;
-            // Imprimir el script de JavaScript que envía el mensaje a la consola
-            echo "<script>console.log('$mensaje');</script>";
+            $mensaje = "formulario incompleto " ;
+            echo "<pre>";
+            print_r($_POST);
+            print_r($respuesta);
+            echo "</pre>";
+            //echo "<script> alert('" . $mensaje . "'); window.history.go(-1);</script>";
         }
 
     }

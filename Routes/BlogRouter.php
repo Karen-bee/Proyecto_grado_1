@@ -52,7 +52,7 @@ function EditarBlog($idblog) {
         $idblog !== null &&
         isset($_POST['titulo_blog']) &&
         isset($_POST['subtitulo_blog']) &&
-        isset($_POST['idusuario']) &&
+        isset($_POST['id_usuario']) &&
         isset($_POST['detalle_blog']) &&
         isset($_POST['idtipoblog'])
     ) {
@@ -64,7 +64,7 @@ function EditarBlog($idblog) {
             "idBlog" => $idblog,
             "titulo_Blog" => $_POST['titulo_blog'],
             "subtitulo_blog" => $_POST['subtitulo_blog'],
-            "idusuario" => $_POST['idusuario'],
+            "id_usuario" => $_POST['id_usuario'],
             "detalle_Blog" => $_POST['detalle_blog'],
             "idtipo_Blog" => $_POST['idtipoblog']
         );

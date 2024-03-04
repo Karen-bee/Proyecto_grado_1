@@ -25,7 +25,7 @@ function EditarNoticia($idnoticias) {
         $idnoticias !== null &&
         isset($_POST['titulo_noticia']) &&
         isset($_POST['subtitulo_noticias']) &&
-        isset($_POST['idusuario']) &&
+        isset($_POST['id_usuario']) &&
         isset($_POST['detalle_noticias']) &&
         isset($_POST['idtiponoticia'])
     ) {
@@ -37,7 +37,7 @@ function EditarNoticia($idnoticias) {
             "idNoticias" => $idnoticias,
             "titulo_Noticia" => $_POST['titulo_noticia'],
             "subtitulo_noticias" => $_POST['subtitulo_noticias'],
-            "idusuario" => $_POST['idusuario'],
+            "id_usuario" => $_POST['id_usuario'],
             "detalle_Noticia" => $_POST['detalle_noticias'],
             "idtipo_Noticia" => $_POST['idtiponoticia']
         );
@@ -69,7 +69,7 @@ function NuevoNoticia() {
     if (
         isset($_POST['titulo_Noticia']) &&
         isset($_POST['subtitulo_noticias']) &&
-        isset($_POST['idusuario']) &&
+        isset($_POST['id_usuario']) &&
         isset($_POST['detalle_Noticia']) &&
         isset($_POST['idtipo_Noticia'])
     ) {
@@ -82,7 +82,7 @@ function NuevoNoticia() {
             "detalle_Noticia" => $_POST['detalle_Noticia'],
             "idtipo_Noticia" => $_POST['idtipo_Noticia'],
             "subtitulo_noticias" => $_POST['subtitulo_noticias'],
-            "idusuario" => $_POST['idusuario']
+            "id_usuario" => $_POST['id_usuario']
         );
 
         $respuesta = $noticiaController->NuevoNoticiaController($datos);

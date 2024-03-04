@@ -12,25 +12,25 @@ class NoticiaModel {
     }
 
     public function ObtenerNoticiasActivasModel(){
-        $consulta = "SELECT e.*, te.tipo_noticia AS tipoNoticia, usuario.nombrecompleto_usuario as usuarioN
+        $consulta = "SELECT e.*, te.tipo_noticia AS tipoNoticia, usuario.nombre_completo as usuarioN
         FROM Noticias e
-        LEFT JOIN tipoNoticia te ON e.idtipo_Noticia = te.idtipo_Noticia JOIN usuario ON usuario.idusuario = e.idusuario WHERE e.estado_noticia='Activo';";
+        LEFT JOIN tipoNoticia te ON e.idtipo_Noticia = te.idtipo_Noticia JOIN usuario ON usuario.id_usuario = e.id_usuario WHERE e.estado_noticia='Activo';";
         $respuesta = $this->conexion->EjecutarSPSinParams($consulta);
         return $respuesta;
     }
     public function ObtenerNoticiasModel(){
-        $consulta = "SELECT e.*, te.tipo_noticia AS tipoNoticia, usuario.nombrecompleto_usuario as usuarioN
+        $consulta = "SELECT e.*, te.tipo_noticia AS tipoNoticia, usuario.nombre_completo as usuarioN
         FROM Noticias e
-        LEFT JOIN tipoNoticia te ON e.idtipo_Noticia = te.idtipo_Noticia JOIN usuario ON usuario.idusuario = e.idusuario ;";
+        LEFT JOIN tipoNoticia te ON e.idtipo_Noticia = te.idtipo_Noticia JOIN usuario ON usuario.id_usuario = e.id_usuario ;";
         $respuesta = $this->conexion->EjecutarSPSinParams($consulta);
         return $respuesta;
     }
 
     public function ObtenerUltimaNoticiaModel(){
-        $consulta = "SELECT e.*, te.tipo_noticia AS tipoNoticia, usuario.nombrecompleto_usuario as usuarioN
+        $consulta = "SELECT e.*, te.tipo_noticia AS tipoNoticia, usuario.nombre_completo as usuarioN
         FROM Noticias e
         LEFT JOIN tipoNoticia te ON e.idtipo_Noticia = te.idtipo_Noticia
-        JOIN usuario ON usuario.idusuario = e.idusuario WHERE e.estado_noticia='Activo'
+        JOIN usuario ON usuario.id_usuario = e.id_usuario WHERE e.estado_noticia='Activo'
         ORDER BY fecha_publicacion DESC
         LIMIT 1;";
 
@@ -39,9 +39,9 @@ class NoticiaModel {
     }
 
     public function ObtenerNoticiaPorIdModel($idNoticias){
-        $consulta = "SELECT e.*, te.tipo_noticia AS tipoNoticia, usuario.nombrecompleto_usuario as usuarioN
+        $consulta = "SELECT e.*, te.tipo_noticia AS tipoNoticia, usuario.nombre_completo as usuarioN
         FROM Noticias e
-        LEFT JOIN tipoNoticia te ON e.idtipo_Noticia = te.idtipo_Noticia JOIN usuario ON usuario.idusuario = e.idusuario WHERE idNoticias = :prm_idNoticias";
+        LEFT JOIN tipoNoticia te ON e.idtipo_Noticia = te.idtipo_Noticia JOIN usuario ON usuario.id_usuario = e.id_usuario WHERE idNoticias = :prm_idNoticias";
         $parametros = array(
             "prm_idNoticias"=>$idNoticias
         );
@@ -53,8 +53,8 @@ class NoticiaModel {
 
     
     public function NuevoNoticiaModel($datos){
-        $consulta = "INSERT INTO Noticias(nombre_Noticia , idusuario, detalle_noticias, idtipo_Noticia, imagen_card, subtitulo_noticias) 
-        VALUES (:prm_titulo_Noticia, :prm_idusuario, :prm_detalle_Noticia, :prm_idtipo_Noticia, :imagen_Noticias,:prm_subtitulo_noticias)";
+        $consulta = "INSERT INTO Noticias(nombre_Noticia , id_usuario, detalle_noticias, idtipo_Noticia, imagen_card, subtitulo_noticias) 
+        VALUES (:prm_titulo_Noticia, :prm_id_usuario, :prm_detalle_Noticia, :prm_idtipo_Noticia, :imagen_Noticias,:prm_subtitulo_noticias)";
         
         $imageDirectory = '../../Literagiando/Storage/img-Noticias/'; 
         $uploadedFile = $_FILES['imagen']['tmp_name'];
@@ -66,7 +66,7 @@ class NoticiaModel {
     
             $parametros = array(
                 "prm_titulo_Noticia" => $datos['titulo_Noticia'],
-                "prm_idusuario" => $datos['idusuario'],
+                "prm_id_usuario" => $datos['id_usuario'],
                 "prm_detalle_Noticia" => $datos['detalle_Noticia'],
                 "prm_idtipo_Noticia" => $datos['idtipo_Noticia'],
                 "prm_subtitulo_noticias" => $datos['subtitulo_noticias'],
@@ -76,11 +76,11 @@ class NoticiaModel {
             $respuesta = $this->conexion->EjecutarSPConParams($consulta, $parametros);
             return $respuesta;
         } else {
-            $consulta = "INSERT INTO Noticias(nombre_Noticia , idusuario, detalle_noticias, idtipo_Noticia, imagen_card, subtitulo_noticias) 
-                VALUES (:prm_titulo_Noticia, :prm_idusuario, :prm_detalle_Noticia, :prm_idtipo_Noticia, :imagen_Noticias,:prm_subtitulo_noticias)";
+            $consulta = "INSERT INTO Noticias(nombre_Noticia , id_usuario, detalle_noticias, idtipo_Noticia, imagen_card, subtitulo_noticias) 
+                VALUES (:prm_titulo_Noticia, :prm_id_usuario, :prm_detalle_Noticia, :prm_idtipo_Noticia, :imagen_Noticias,:prm_subtitulo_noticias)";
             $parametros = array(
                 "prm_titulo_Noticia" => $datos['titulo_Noticia'],
-                "prm_idusuario" => $datos['idusuario'],
+                "prm_id_usuario" => $datos['id_usuario'],
                 "prm_detalle_Noticia" => $datos['detalle_Noticia'],
                 "prm_idtipo_Noticia" => $datos['idtipo_Noticia'],
                 "prm_subtitulo_noticias" => $datos['subtitulo_noticias'],
@@ -94,7 +94,7 @@ class NoticiaModel {
 
     public function ModificarNoticiaModel($datos){
         $consulta = "UPDATE Noticias 
-        SET nombre_Noticia = :prm_titulo_Noticia, subtitulo_noticias = :prm_subtitulo_noticias, detalle_noticias = :prm_detalle_Noticia, idusuario = :prm_idusuario, idtipo_Noticia = :prm_idtipo_Noticia, imagen_card = :imagen_Noticias 
+        SET nombre_Noticia = :prm_titulo_Noticia, subtitulo_noticias = :prm_subtitulo_noticias, detalle_noticias = :prm_detalle_Noticia, id_usuario = :prm_id_usuario, idtipo_Noticia = :prm_idtipo_Noticia, imagen_card = :imagen_Noticias 
         WHERE idnoticias = :prm_idNoticias";
         
 
@@ -112,7 +112,7 @@ class NoticiaModel {
                 "prm_subtitulo_noticias" => $datos['subtitulo_noticias'],
                 "prm_detalle_Noticia" => $datos['detalle_Noticia'],
                 "prm_idtipo_Noticia" => $datos['idtipo_Noticia'],
-                "prm_idusuario" => $datos['idusuario'],
+                "prm_id_usuario" => $datos['id_usuario'],
                 "imagen_Noticias" => substr($imageFilePath,2) 
             );
     
@@ -121,7 +121,7 @@ class NoticiaModel {
         } else {
             echo "entroo a aqui";
             $consulta = "UPDATE Noticias 
-            SET nombre_Noticia = :prm_titulo_Noticia, subtitulo_noticias = :prm_subtitulo_noticias, detalle_noticias = :prm_detalle_Noticia, idusuario = :prm_idusuario, idtipo_Noticia = :prm_idtipo_Noticia
+            SET nombre_Noticia = :prm_titulo_Noticia, subtitulo_noticias = :prm_subtitulo_noticias, detalle_noticias = :prm_detalle_Noticia, id_usuario = :prm_id_usuario, idtipo_Noticia = :prm_idtipo_Noticia
             WHERE idnoticias = :prm_idNoticias";
 
             $parametros = array(
@@ -129,7 +129,7 @@ class NoticiaModel {
                 "prm_titulo_Noticia" => $datos['titulo_Noticia'],
                 "prm_subtitulo_noticias" => $datos['subtitulo_noticias'],
                 "prm_detalle_Noticia" => $datos['detalle_Noticia'],
-                "prm_idusuario" => $datos['idusuario'],
+                "prm_id_usuario" => $datos['id_usuario'],
                 "prm_idtipo_Noticia" => $datos['idtipo_Noticia']
             );
             $respuesta = $this->conexion->EjecutarSPConParams($consulta, $parametros);

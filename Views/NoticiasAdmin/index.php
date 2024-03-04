@@ -193,7 +193,7 @@ include '../NoticiasAdmin/create.php';
                     $('#titulo_noticia').val(noticia.nombre_Noticia).trigger('change');
                     $('#subtitulo_noticias').val(noticia.subtitulo_noticias);
                     $('#idtiponoticia').val(noticia.idtipo_Noticia);
-                    $('#idusuario').val(noticia.idusuario);
+                    $('#id_usuario').val(noticia.id_usuario);
                     $('#idnoticias').val(noticia.idnoticias);
                     $('#detalle_noticias').val(noticia.detalle_noticias);
                     //$('input[name="accion"]').val('editar');

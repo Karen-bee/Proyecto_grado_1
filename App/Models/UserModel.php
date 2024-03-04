@@ -18,7 +18,7 @@ class UserModel{
     }
 
     public function ObtenerAllUserModel(){
-        $consulta = "SELECT * FROM usuario JOIN tipodocumento ON tipodocumento.idtipodocumento = usuario.idtipodedocumento JOIN roles ON roles.idrol = usuario.idrolusuario";
+        $consulta = "SELECT * FROM usuario JOIN tipodocumento ON tipodocumento.idtipodocumento = usuario.idtipodedocumento JOIN roles ON roles.idrol = usuario.rol";
         $respuesta = $this->conexion->EjecutarSPSinParams($consulta);
         return $respuesta;
     }
@@ -26,7 +26,7 @@ class UserModel{
 
 
     public function ObtenerUserIdModel($iduser){
-        $consulta = "SELECT * FROM usuario WHERE idusuario = ?";
+        $consulta = "SELECT * FROM usuario WHERE id_usuario = ?";
         $parametros = array(
             "prm_iduser"=>$iduser
         );
@@ -38,15 +38,15 @@ class UserModel{
 
     public function NuevoUserModel($datos){
         $hashedPassword = password_hash($datos['password'], PASSWORD_BCRYPT);
-        $consulta = "INSERT INTO usuario(documento_usuario, nombrecompleto_usuario, direccion_usuario, telefono_usuario, username, correo_usuario, password, idtipodedocumento) 
-                    VALUES (:prm_documento_usuario, :prm_nombrecompleto_usuario, :prm_direccion_usuario, :prm_telefono_usuario, :prm_username, :prm_correo_usuario, :prm_password, :prm_idtipodedocumento)";
+        $consulta = "INSERT INTO usuario(identificacion, nombre_completo, direccion_usuario, telefono, usuario, correo, password, idtipodedocumento) 
+                    VALUES (:prm_identificacion, :prm_nombre_completo, :prm_direccion_usuario, :prm_telefono, :prm_usuario, :prm_correo, :prm_password, :prm_idtipodedocumento)";
         $parametros = array(
-            "prm_documento_usuario" => $datos['documento_usuario'],
-            "prm_nombrecompleto_usuario" => $datos['nombrecompleto_usuario'],
+            "prm_identificacion" => $datos['identificacion'],
+            "prm_nombre_completo" => $datos['nombre_completo'],
             "prm_direccion_usuario" => $datos['direccion_usuario'],
-            "prm_telefono_usuario" => $datos['telefono_usuario'],
-            "prm_username" => $datos['username'],
-            "prm_correo_usuario" => $datos['correo_usuario'],
+            "prm_telefono" => $datos['telefono'],
+            "prm_usuario" => $datos['usuario'],
+            "prm_correo" => $datos['correo'],
             "prm_password" => $hashedPassword,
             "prm_idtipodedocumento" => $datos['idtipodedocumento']
 
@@ -54,20 +54,30 @@ class UserModel{
         );
     
         $respuesta = $this->conexion->EjecutarSPConParams($consulta, $parametros);
-        return $respuesta;
+        if ($respuesta instanceof PDOException) {
+            if ($respuesta->getCode() == 23000) {
+                return ['error' => 'El correo electrónico o nombre de usuario ya está registrado.'];
+            } else {
+                return ['error' => 'Error al registrar el usuario.'];
+            }
+        }
+        
+            return $respuesta;
+        
+        
     }
 
 
     
     public function ModificarUserModel($datos){
 
-        if (!empty($datos['foto_usuario'])) {
+        if (!empty($datos['foto_perfil'])) {
             $consulta = "UPDATE usuario 
-            SET foto_usuario = :prm_foto_usuario
-            WHERE idusuario = :prm_idusuario";
+            SET foto_perfil = :prm_foto_perfil
+            WHERE id_usuario = :prm_id_usuario";
             $parametros = array(
-                "prm_foto_usuario" => $datos['foto_usuario'],
-                "prm_idusuario" => $datos['idusuario']
+                "prm_foto_perfil" => $datos['foto_perfil'],
+                "prm_id_usuario" => $datos['id_usuario']
             );
 
             $respuesta = $this->conexion->EjecutarSPConParams($consulta, $parametros);
@@ -84,36 +94,36 @@ class UserModel{
 
         if (!empty($datos['idtipodedocumento'])) {
             $consulta = "UPDATE usuario 
-            SET documento_usuario = :prm_documento_usuario, nombrecompleto_usuario = :prm_nombrecompleto_usuario, direccion_usuario = :prm_direccion_usuario,
-                telefono_usuario = :prm_telefono_usuario, username = :prm_username, correo_usuario = :prm_correo_usuario,
+            SET identificacion = :prm_identificacion, nombre_completo = :prm_nombre_completo, direccion_usuario = :prm_direccion_usuario,
+                telefono = :prm_telefono, usuario = :prm_usuario, correo = :prm_correo,
                 password = :prm_password, idtipodedocumento = :prm_idtipodedocumento
-            WHERE idusuario = :prm_idusuario";
+            WHERE id_usuario = :prm_id_usuario";
     
             $parametros = array(
-                "prm_documento_usuario" => $datos['documento_usuario'],
-                "prm_nombrecompleto_usuario" => $datos['nombrecompleto_usuario'],
+                "prm_identificacion" => $datos['identificacion'],
+                "prm_nombre_completo" => $datos['nombre_completo'],
                 "prm_direccion_usuario" => $datos['direccion_usuario'],
-                "prm_telefono_usuario" => $datos['telefono_usuario'],
-                "prm_username" => $datos['username'],
-                "prm_correo_usuario" => $datos['correo_usuario'],
+                "prm_telefono" => $datos['telefono'],
+                "prm_usuario" => $datos['usuario'],
+                "prm_correo" => $datos['correo'],
                 "prm_password" => $hashedPassword,
                 "prm_idtipodedocumento" => $datos['idtipodedocumento'],
-                "prm_idusuario" => $datos['idusuario']
+                "prm_id_usuario" => $datos['id_usuario']
             );
-        } else if(!empty($datos['documento_usuario'])){
+        } else if(!empty($datos['identificacion'])){
             $consulta = "UPDATE usuario 
-            SET documento_usuario = :prm_documento_usuario, nombrecompleto_usuario = :prm_nombrecompleto_usuario, direccion_usuario = :prm_direccion_usuario,
-                telefono_usuario = :prm_telefono_usuario, correo_usuario = :prm_correo_usuario, username = :prm_username
-            WHERE idusuario = :prm_idusuario";
+            SET identificacion = :prm_identificacion, nombre_completo = :prm_nombre_completo, direccion_usuario = :prm_direccion_usuario,
+                telefono = :prm_telefono, correo = :prm_correo, usuario = :prm_usuario
+            WHERE id_usuario = :prm_id_usuario";
     
             $parametros = array(
-                "prm_documento_usuario" => $datos['documento_usuario'],
-                "prm_nombrecompleto_usuario" => $datos['nombrecompleto_usuario'],
+                "prm_identificacion" => $datos['identificacion'],
+                "prm_nombre_completo" => $datos['nombre_completo'],
                 "prm_direccion_usuario" => $datos['direccion_usuario'],
-                "prm_username" => $datos['username'],
-                "prm_telefono_usuario" => $datos['telefono_usuario'],
-                "prm_correo_usuario" => $datos['correo_usuario'],
-                "prm_idusuario" => $datos['idusuario']
+                "prm_usuario" => $datos['usuario'],
+                "prm_telefono" => $datos['telefono'],
+                "prm_correo" => $datos['correo'],
+                "prm_id_usuario" => $datos['id_usuario']
             );   
         }
     
@@ -131,9 +141,9 @@ class UserModel{
     public function activarUserModel($datos){
         $consulta = "UPDATE usuario 
         SET estado = :prm_estado
-        WHERE idusuario = :prm_idUser";
+        WHERE id_usuario = :prm_idUser";
         $parametros = array(
-            "prm_idUser"=>$datos['idusuario'],
+            "prm_idUser"=>$datos['id_usuario'],
             "prm_estado" => $datos['estado']
         );
 
@@ -143,11 +153,11 @@ class UserModel{
     }
     public function editarRolModel($datos){
         $consulta = "UPDATE usuario 
-        SET idrolusuario = :prm_idrolusuario
-        WHERE idusuario = :prm_idUser";
+        SET rol = :prm_rol
+        WHERE id_usuario = :prm_idUser";
         $parametros = array(
-            "prm_idUser"=>$datos['idusuario'],
-            "prm_idrolusuario" => $datos['idrol']
+            "prm_idUser"=>$datos['id_usuario'],
+            "prm_rol" => $datos['idrol']
         );
 
         $respuesta = $this->conexion->EjecutarSPConParams($consulta, $parametros);

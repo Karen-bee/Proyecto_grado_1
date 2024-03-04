@@ -11,7 +11,7 @@
       
       <input type="text" name="accion" value="editar" hidden>
 
-      <input type="text" name="idusuario" id="Idusuario" hidden>
+      <input type="text" name="id_usuario" id="Id_usuario" hidden>
       <input type="password" name="password_actual" id="password" hidden>
 
 
@@ -26,13 +26,13 @@
       </div>
 
       <div class="col">
-          <label for="documento_usuario"><i class="bi bi-fingerprint"></i> N°. Documento</label>
-          <input type="text" name="documento_usuario" id="Documento_usuario" value="<?php echo isset($user['documento_usuario']) ? $user['documento_usuario'] : ''; ?>" class="form-control">
+          <label for="identificacion"><i class="bi bi-fingerprint"></i> N°. Documento</label>
+          <input type="text" name="identificacion" id="Identificacion" value="<?php echo isset($user['identificacion']) ? $user['identificacion'] : ''; ?>" class="form-control">
       </div>
 
       <div class="col">
-          <label for="nombrecompleto_usuario"><i class="bi bi-person"></i> Nombre Completo</label>
-          <input type="text" name="nombrecompleto_usuario" id="Nombrecompleto_usuario" class="form-control">
+          <label for="nombre_completo"><i class="bi bi-person"></i> Nombre Completo</label>
+          <input type="text" name="nombre_completo" id="Nombre_completo" class="form-control">
       </div>
       <div class="col">
           <label for="direccion_usuario"><i class="bi bi-geo-alt-fill"></i> Dirección</label>
@@ -40,18 +40,18 @@
       </div>
 
       <div class="col">
-          <label for="telefono_usuario"><i class="bi bi-telephone"></i> Telefono</label>
-          <input type="text" name="telefono_usuario" id="Telefono_usuario" class="form-control">
+          <label for="telefono"><i class="bi bi-telephone"></i> Telefono</label>
+          <input type="text" name="telefono" id="Telefono_usuario" class="form-control">
       </div>
 
       <div class="col">
-          <label for="username"><i class="bi bi-person-bounding-box"></i> Nombre/Usuario</label>
-          <input type="text" name="username" id="Username" class="form-control">
+          <label for="usuario"><i class="bi bi-person-bounding-box"></i> Nombre/Usuario</label>
+          <input type="text" name="usuario" id="Username" class="form-control">
       </div>
 
       <div class="col">
-          <label for="correo_usuario"><i class="bi bi-envelope-at"></i> E-mail</label>
-          <input type="email" name="correo_usuario" id="Correo_usuario" class="form-control">
+          <label for="correo"><i class="bi bi-envelope-at"></i> E-mail</label>
+          <input type="email" name="correo" id="Correo" class="form-control">
       </div>
 
       <div class="col">

@@ -40,12 +40,12 @@ class EventoModel {
 
     }
 
-    public function ObtenerMisEventosModel($idusuario){
+    public function ObtenerMisEventosModel($id_usuario){
         $consulta = "SELECT * FROM eventos 
                      JOIN asistencia_eventos ON asistencia_eventos.ideventos = eventos.ideventos 
-                     WHERE asistencia_eventos.idusuario = :idusuario";
+                     WHERE asistencia_eventos.id_usuario = :id_usuario";
     
-        $parametros = array("idusuario" => $idusuario);
+        $parametros = array("id_usuario" => $id_usuario);
         $respuesta = $this->conexion->EjecutarSPConParams($consulta, $parametros);
     
         return $respuesta;

@@ -49,7 +49,7 @@ $rolActivo = null;
 
 $paginaActual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
 
-$rolesPorPagina = 2;
+$rolesPorPagina = 4;
 $totalPaginas = ceil(count($roles) / $rolesPorPagina);
 
 $inicio = ($paginaActual - 1) * $rolesPorPagina;

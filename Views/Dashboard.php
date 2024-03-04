@@ -13,7 +13,7 @@
 
 <div class="content-evento">
     <div class="col-4"><hr id="line-left"><hr id="line-left"></div>
-    <div class="col-4"><h1 id="title-eventos">Hola <?php  echo $row['nombrecompleto_usuario']?> </h1></div>
+    <div class="col-4"><h1 id="title-eventos">Hola <?php  echo $row['nombre_completo']?> </h1></div>
     <div class="col-4"><hr id="line-right"><hr id="line-right"></div>
 </div>
 

@@ -48,13 +48,13 @@
                 </div>
 
                 <div class="col">
-                    <label for="documento_usuario"><i class="bi bi-fingerprint"></i> N°. Documento</label>
-                    <input required type="number" name="documento_usuario" id="documento_usuario" class="form-control">
+                    <label for="identificacion"><i class="bi bi-fingerprint"></i> N°. Documento</label>
+                    <input required type="number" name="identificacion" id="identificacion" class="form-control">
                 </div>
 
                 <div class="col">
-                    <label for="nombrecompleto_usuario"><i class="bi bi-person"></i> Nombre Completo</label>
-                    <input required type="text" name="nombrecompleto_usuario" id="nombrecompleto_usuario" class="form-control">
+                    <label for="nombre_completo"><i class="bi bi-person"></i> Nombre Completo</label>
+                    <input required type="text" name="nombre_completo" id="nombre_completo" class="form-control">
                 </div>
                 <div class="col">
                     <label for="direccion_usuario"><i class="bi bi-geo-alt-fill"></i> Dirección</label>
@@ -62,18 +62,18 @@
                 </div>
 
                 <div class="col">
-                    <label for="telefono_usuario"><i class="bi bi-telephone"></i> Telefono</label>
-                    <input required type="number" name="telefono_usuario" id="telefono_usuario" class="form-control">
+                    <label for="telefono"><i class="bi bi-telephone"></i> Telefono</label>
+                    <input required type="number" name="telefono" id="telefono" class="form-control">
                 </div>
 
                 <div class="col">
-                    <label for="username"><i class="bi bi-person-bounding-box"></i> Nombre/Usuario</label>
-                    <input required type="text" name="username" id="username" class="form-control">
+                    <label for="usuario"><i class="bi bi-person-bounding-box"></i> Nombre/Usuario</label>
+                    <input required type="text" name="usuario" id="usuario" class="form-control">
                 </div>
 
                 <div class="col">
-                    <label for="correo_usuario"><i class="bi bi-envelope-at"></i> E-mail</label>
-                    <input required type="email" name="correo_usuario" id="correo_usuario" class="form-control">
+                    <label for="correo"><i class="bi bi-envelope-at"></i> E-mail</label>
+                    <input required type="email" name="correo" id="correo" class="form-control">
                 </div>
 
                 <div class="col">

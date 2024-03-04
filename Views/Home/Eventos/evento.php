@@ -47,8 +47,8 @@ $fechaFormateada = strtr($fechaFormateada, array_merge($meses, $dias));
 
 if (isset($_POST["idEvento"])) {
 
-    if(isset($idrolusuario)){
-        inscribirEvento($row['idusuario'], $_POST["idEvento"]);
+    if(isset($rol)){
+        inscribirEvento($row['id_usuario'], $_POST["idEvento"]);
     }else{
         $mensaje = "No has iniciado sesión. Por favor, inicia sesión para acceder.";
         echo '<script>alert("' . htmlspecialchars($mensaje, ENT_QUOTES, 'UTF-8') . '");</script>';
@@ -81,7 +81,7 @@ if (isset($_POST["idEvento"])) {
         <div>
             <form action="evento.php" method="POST">
                         <input type="hidden" name="idEvento" value="<?php echo $evento[0]['ideventos']; ?>">
-                        <input type="hidden" name="idusuario" value="<?php echo $row['idusuario']; ?>">
+                        <input type="hidden" name="id_usuario" value="<?php echo $row['id_usuario']; ?>">
                         <input type="hidden" name="accion" value="inscribirEvento">
                         <button type="submit" class="btnIns">Inscribirme</button>
              </form>

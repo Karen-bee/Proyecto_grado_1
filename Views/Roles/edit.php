@@ -31,7 +31,7 @@ if ($accion) {
           <label for="nombre_rol" class="form-label">Nombre/Rol:</label>
           <input type="text" id="accion" name="action" value="eliminarPermiso" hidden>
           <input type="text" id="idpagina" name="id_pagina"  hidden>
-          <input type="text" class="form-control" id="nombre_rol"  value="<?php echo $nombre_rol ?>"required>
+          <input type="text" class="form-control" id="nombre_rol"  value="<?php echo $nombre_rol ?>"required readonly>
           <br>
           <table class="table table-striped table-hover">
             <thead>
@@ -60,8 +60,7 @@ if ($accion) {
             </table>
 
 
-          <a href="./index.php" class="btn btn-default">Cancelar</a>
-          <button type="submit" class="btn butn-primary">Guardar</button>
+          <a href="./index.php" class="btn butn-primary">Cerrar</a>
         </form>
       </div>
     </div>

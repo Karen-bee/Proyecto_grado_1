@@ -27,28 +27,29 @@ class RegisterController extends UserModel {
         return $this->respuesta;
     }
 
-    public function NuevoUserController($datos)
-        {
-            try {
-                $resultados = $this->userModel->NuevoUserModel($datos);
-                $this->respuesta = array(
-                    "state" => true,
-                    "resultado" => $resultados
-                );
-            } catch (PDOException $pdoEx) {
-                $this->respuesta = array(
-                    "state" => false,
-                    "mensaje" => $pdoEx->getMessage()
-                );
-            }
-
-            return $this->respuesta;
+    public function NuevoUserController($datos) {
+        $resultados = $this->userModel->NuevoUserModel($datos);
+        
+        if (isset($resultados['error'])) {
+            $this->respuesta = [
+                "state" => false,
+                "mensaje" => $resultados['error']
+            ];
+        } else {
+            $this->respuesta = [
+                "state" => true,
+                "resultado" => $resultados
+            ];
         }
+    
+        return $this->respuesta;
+    }
+    
 
 
         public function login() {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $correo = $_POST['correo_usuario'];
+                $correo = $_POST['correo'];
                 $password = $_POST['password'];
     
                 $userModel = new UserModel();

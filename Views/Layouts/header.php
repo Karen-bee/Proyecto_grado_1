@@ -14,7 +14,7 @@ if (isset($_SESSION['correo'])) {
   $row = obtenerDatos($correo);
   $paginas = $row['paginas'];
   $row = $row['datos'];
-  $idrolusuario = $row['idrolusuario'];
+  $rol = $row['rol'];
   $paginasPermitidas = obtenerPaginas();
 
 
@@ -74,8 +74,8 @@ function formatfecha($fe){
       <ul class="navbar-nav ms-auto">
         <li class="nav-item dropdown ms-auto">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="<?php echo $row ['foto_usuario'] ?>" alt="" class="img-fluid rounded-circle avatar mr-2">
-            <?php  echo $row['nombrecompleto_usuario']?>
+          <img src="<?php echo $row ['foto_perfil'] ?>" alt="" class="img-fluid rounded-circle avatar mr-2">
+            <?php  echo $row['nombre_completo']?>
           </a>
           <ul class="dropdown-menu">
             <li><a href="/Literagiando/Views/UserCard/perfil.php" class="dropdown-item" href=""><i class='bx bx-user'></i> Perfil</a></li>
@@ -92,11 +92,11 @@ function formatfecha($fe){
             var paginas = <?php echo json_encode($paginasPermitidas); ?>;
 
             // Obtén el ID de rol del usuario actual, ya sea mediante PHP o algún otro método
-            var idrolusuario = <?php echo $idrolusuario; ?>;
+            var rol = <?php echo $rol; ?>;
 
             // Filtra las páginas según el ID de rol del usuario actual
             var paginasFiltradas = paginas.filter(function(pagina) {
-                return idrolusuario == pagina['idrol'];
+                return rol == pagina['idrol'];
             });
 
             // Obtén la lista del panel lateral

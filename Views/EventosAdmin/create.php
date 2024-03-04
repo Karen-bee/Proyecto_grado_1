@@ -40,7 +40,7 @@
 
         <div class="col">
             <label for="fecha_evento">Fecha</label>
-            <input type="date" name="fecha_evento" id="fecha_evento" class="form-control" required>
+            <input type="datetime-local" name="fecha_evento" id="fecha_evento" class="form-control" required>
         </div>
 
         

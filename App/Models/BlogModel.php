@@ -12,26 +12,26 @@ class BlogModel {
     }
 
     public function ObtenerBlogsActivosModel(){
-        $consulta = "SELECT e.*, te.tipo_blog AS tipoBlog, usuario.nombrecompleto_usuario as usuarioN
+        $consulta = "SELECT e.*, te.tipo_blog AS tipoBlog, usuario.nombre_completo as usuarioN
         FROM Blog e
-        LEFT JOIN tipoBlog te ON e.idtipo_blog = te.idtipo_blog JOIN usuario ON usuario.idusuario = e.idusuario WHERE e.estado_blog = 'Activo'";
+        LEFT JOIN tipoBlog te ON e.idtipo_blog = te.idtipo_blog JOIN usuario ON usuario.id_usuario = e.id_usuario WHERE e.estado_blog = 'Activo'";
         $respuesta = $this->conexion->EjecutarSPSinParams($consulta);
         return $respuesta;
     }
 
     public function ObtenerBlogModel(){
-        $consulta = "SELECT e.*, te.tipo_blog AS tipoBlog, usuario.nombrecompleto_usuario as usuarioN
+        $consulta = "SELECT e.*, te.tipo_blog AS tipoBlog, usuario.nombre_completo as usuarioN
         FROM Blog e
-        LEFT JOIN tipoBlog te ON e.idtipo_blog = te.idtipo_blog JOIN usuario ON usuario.idusuario = e.idusuario";
+        LEFT JOIN tipoBlog te ON e.idtipo_blog = te.idtipo_blog JOIN usuario ON usuario.id_usuario = e.id_usuario";
         $respuesta = $this->conexion->EjecutarSPSinParams($consulta);
         return $respuesta;
     }
 
     public function ObtenerUltimoBlogModel(){
-        $consulta = "SELECT e.*, te.tipo_blog AS tipoBlog, usuario.nombrecompleto_usuario as usuarioN
+        $consulta = "SELECT e.*, te.tipo_blog AS tipoBlog, usuario.nombre_completo as usuarioN
         FROM Blog e
         LEFT JOIN tipoBlog te ON e.idtipo_blog = te.idtipo_blog
-        JOIN usuario ON usuario.idusuario = e.idusuario WHERE e.estado_blog = 'Activo'
+        JOIN usuario ON usuario.id_usuario = e.id_usuario WHERE e.estado_blog = 'Activo'
         ORDER BY fecha_publicacion DESC
         LIMIT 1;";
 
@@ -40,9 +40,9 @@ class BlogModel {
     }
 
     public function ObtenerBlogPorIdModel($idBlog){
-        $consulta = "SELECT e.*, te.tipo_blog AS tipoBlog, usuario.nombrecompleto_usuario as usuarioN
+        $consulta = "SELECT e.*, te.tipo_blog AS tipoBlog, usuario.nombre_completo as usuarioN
         FROM Blog e
-        LEFT JOIN tipoBlog te ON e.idtipo_blog = te.idtipo_blog JOIN usuario ON usuario.idusuario = e.idusuario WHERE idBlog = :prm_idBlog";
+        LEFT JOIN tipoBlog te ON e.idtipo_blog = te.idtipo_blog JOIN usuario ON usuario.id_usuario = e.id_usuario WHERE idBlog = :prm_idBlog";
         $parametros = array(
             "prm_idBlog"=>$idBlog
         );
@@ -54,8 +54,8 @@ class BlogModel {
 
     
     public function NuevoBlogModel($datos){
-        $consulta = "INSERT INTO Blog(titulo_blog , idusuario, detalle_blog, idtipo_blog, imagen_blog, subtitulo_blog) 
-        VALUES (:prm_titulo_Blog, :prm_idusuario, :prm_detalle_Blog, :prm_idtipo_blog, :imagen_Blog,:prm_subtitulo_blog)";
+        $consulta = "INSERT INTO Blog(titulo_blog , id_usuario, detalle_blog, idtipo_blog, imagen_blog, subtitulo_blog) 
+        VALUES (:prm_titulo_Blog, :prm_id_usuario, :prm_detalle_Blog, :prm_idtipo_blog, :imagen_Blog,:prm_subtitulo_blog)";
         
         $imageDirectory = '../../Literagiando/Storage/img-blogs/'; 
         $uploadedFile = $_FILES['imagen']['tmp_name'];
@@ -67,7 +67,7 @@ class BlogModel {
             $parametros = array(
                 "prm_titulo_Blog" => $datos['titulo_blog'],
                 "prm_subtitulo_blog" => $datos['subtitulo_blog'],
-                "prm_idusuario" => $datos['id_usuario'],
+                "prm_id_usuario" => $datos['id_usuario'],
                 "prm_detalle_Blog" => $datos['detalle_blog'],
                 "prm_idtipo_blog" => $datos['idtipo_blog'],
                 "imagen_Blog" => substr($imageFilePath,2) 

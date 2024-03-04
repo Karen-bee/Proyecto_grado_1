@@ -15,7 +15,7 @@
         $row = obtenerDatos($correo);
         $paginas = $row['paginas'];
         $row = $row['datos'];
-        $idrolusuario = $row['idrolusuario'];
+        $rol = $row['rol'];
     }
     include_once (__DIR__.'/../Home/Videos/Home.php');
     include_once __DIR__ . '/../Login/login.php';
@@ -78,20 +78,12 @@
                     <li class="nav-item">
                     <a id="btnBlog" class="nav-link" href="/Literagiando/Views/Home/Blog/blogs.php"><strong>Blogs</strong></a>
                     </li>
-                    <li class="nav-item dropdown">
-                    <a id="btnBiblioteca" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <strong>Biblioteca</strong>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
+                    <li class="nav-item">
+                    <a id="btnBiblioteca" class="nav-link" href="/Literagiando/literagiando59/login.php"><strong>Biblioteca</strong></a>
                     </li>
 
                 </ul>
-                <?php if (!isset($idrolusuario)) { ?>
+                <?php if (!isset($rol)) { ?>
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a id="btnIncioDeSesionVideo" class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#LoginModal">
@@ -103,8 +95,8 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown ms-auto">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="<?php echo $row['foto_usuario'] ?>" alt="" class="img-fluid rounded-circle avatar mr-2">
-                                <?php echo $row['nombrecompleto_usuario'] ?>
+                                <img src="<?php echo $row['foto_perfil'] ?>" alt="" class="img-fluid rounded-circle avatar mr-2">
+                                <?php echo $row['nombre_completo'] ?>
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="/Literagiando/Views/UserCard/perfil.php" class="dropdown-item"><i class='bx bx-user'></i> Perfil</a></li>

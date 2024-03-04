@@ -27,9 +27,9 @@
 
                 <div class="group-input">
                     <div class="col" style="margin: 20px;">
-                        <label for="correo_usuario"><i class='bx bx-user'></i> Usuario:</label>
+                        <label for="correo"><i class='bx bx-user'></i> Usuario:</label>
                         <br>
-                        <input type="correo_usuario" name="correo_usuario" id="correo_usuario" class="form-control">
+                        <input type="correo" name="correo" id="correo" class="form-control">
                     </div>
 
                     <div class="col" style="margin: 20px;">
@@ -54,7 +54,7 @@
         
     </div>
     <div class="register-log">
-        <strong>¿No te has registrado?. <a id="btnRegistrateVideo" href="/Literagiando/Views/Login/register_user.php">Registrate Aqui.</a></strong>
+        <strong>¿No te has registrado?. <a id="btnRegistrateVideo" href="/Literagiando/Views/Login/register_user.php">Registrate</a></strong>
     </div>
     </div>
     </form>

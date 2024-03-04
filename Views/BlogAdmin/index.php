@@ -183,7 +183,7 @@ include '../BlogAdmin/edit.php';
                     $('#tituloBlog').val(blog.titulo_blog).trigger('change');
                     $('#subtitulo_blog').val(blog.subtitulo_blog);
                     $('#idtipoblog').val(blog.idtipo_blog);
-                    $('#id_usuario').val(blog.idusuario);
+                    $('#id_usuario').val(blog.id_usuario);
                     $('#idblog').val(blog.idblog);
                     $('#detalle_blogE').val(blog.detalle_blog);
                     //$('input[name="accion"]').val('editar');

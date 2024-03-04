@@ -22,7 +22,7 @@ if ($roles['state'] == 1) {
       
       <input type="text" name="accion" value="editarRol" hidden>
 
-      <input type="text" name="idusuario" id="Idusuarioo" hidden>
+      <input type="text" name="id_usuario" id="Id_usuarioo" hidden>
 
 
       <div class="col">

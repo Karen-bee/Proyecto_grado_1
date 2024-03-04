@@ -34,11 +34,11 @@
         </div>
         
         <div class="col">
-          <label for="idusuario">Usuario/Create</label>
-          <select name="id_usuario" id="idusuario" class="form-control" required>
+          <label for="id_usuario">Usuario/Create</label>
+          <select name="id_usuario" id="id_usuario" class="form-control" required>
             <option value="">---Seleccióne---</option>
             <?php foreach ($userss['users'] as $row): ?>
-            <option value="<?php echo $row['idusuario']; ?>"><?php echo $row['nombrecompleto_usuario'] ?></option>
+            <option value="<?php echo $row['id_usuario']; ?>"><?php echo $row['nombre_completo'] ?></option>
 
             <?php endforeach ?>
           </select>

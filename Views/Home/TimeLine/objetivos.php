@@ -25,7 +25,7 @@ foreach ($arrayDividido as $key => $values) {
 
 <?php $i = 0;
     foreach($arrayDividido as $titulo){ if($i%2 === 0){?>
-        <div id="card-1" class="card mb-3" style="max-width: 840px;">
+        <div id="card-1" class="card mb-3" style="width: 840px;">
             <div class="row g-0">
                 <div class="col-md-4">
                     <strong class="title-1"><?php echo $titulo['titulo_objetivos'];?></strong>
@@ -39,7 +39,7 @@ foreach ($arrayDividido as $key => $values) {
             </div>
         </div>
 <?php }else{?>
-    <div id="card-2" class="card mb-3" style="max-width: 840px;">
+    <div id="card-2" class="card mb-3" style="width: 840px;">
         <div class="row g-0">
             <div class="col-md-8">
             <div class="card-body" style="height: 288px;">
