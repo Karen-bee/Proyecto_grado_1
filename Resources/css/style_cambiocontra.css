@@ -162,6 +162,11 @@ p {
     font-size: 20px;
 }
 
+.limitar-span {
+    display: inline-block;
+    max-width: 150px; /* ajusta este valor según tus necesidades */
+}
+
 /* responsive */
 
 @media(max-width: 1100px) {

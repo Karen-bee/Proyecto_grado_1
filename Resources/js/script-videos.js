@@ -3,28 +3,57 @@ function inicializarModal(botonId, modalId) {
   var boton = document.getElementById(botonId);
   var modal = document.getElementById(modalId);
 
-  try {
   if (boton && modal) {
+      boton.addEventListener('mouseenter', function() {
+          // Muestra el modal para calcular sus dimensiones
+          modal.style.visibility = 'hidden';
+          modal.style.display = 'block';
 
-    boton.addEventListener('mouseenter', function() {
-        // Posiciona el modal debajo del botón
-        var rect = boton.getBoundingClientRect();
-        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-        modal.style.left = rect.left + 'px';
-        modal.style.top = rect.bottom + scrollTop + 'px';
-        modal.style.display = 'block';
-    });
+          var botonRect = boton.getBoundingClientRect();
+          var modalRect = modal.getBoundingClientRect();
 
-    boton.addEventListener('mouseleave', function() {
-        modal.style.display = 'none';
-    });
-    
+          var scrollTop = window.scrollY || document.documentElement.scrollTop;
+          var scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+
+          // Calcula la posición inicial debajo del botón
+          var topPos = botonRect.bottom + scrollTop;
+          var leftPos = botonRect.left + scrollLeft;
+
+          // Verifica si el modal cabe debajo del botón
+          if (window.innerHeight + scrollTop < topPos + modalRect.height) {
+              // No cabe debajo, verifica a la derecha
+              if (window.innerWidth > botonRect.right + modalRect.width) {
+                  leftPos = botonRect.right + scrollLeft;
+                  // Alinea verticalmente al centro del botón
+                  topPos = botonRect.top + scrollTop + (botonRect.height / 2) - (modalRect.height / 2);
+              } else if (botonRect.left - modalRect.width > 0) { // Verifica a la izquierda
+                  leftPos = botonRect.left - modalRect.width + scrollLeft;
+                  // Alinea verticalmente al centro del botón
+                  topPos = botonRect.top + scrollTop + (botonRect.height / 2) - (modalRect.height / 2);
+              }
+          }
+
+          // Ajustes para asegurar que el modal no se extienda fuera del viewport
+          if (topPos < scrollTop) {
+              topPos = scrollTop + 10; // Margen superior
+          } else if (topPos + modalRect.height > window.innerHeight + scrollTop) {
+              topPos = window.innerHeight + scrollTop - modalRect.height - 10; // Margen inferior
+          }
+
+          // Aplica la posición calculada
+          modal.style.top = topPos + 'px';
+          modal.style.left = leftPos + 'px';
+          modal.style.visibility = 'visible';
+      });
+
+      boton.addEventListener('mouseleave', function() {
+          modal.style.display = 'none';
+      });
   }
-  } catch (error) {
-      console.log("Error: "+error)
-  }
-
 }
+
+
+
 
 
 

@@ -17,13 +17,10 @@
     max-width: 400px;
     position: relative;
   }
-  .video {
-    width: 200px; /* Ancho deseado del video */
-    height: auto; /* Mantener la proporción original */
+
+  .video{
+    width: 200px; /* ajusta el ancho */
+    height: auto; /* mantiene la proporción original */
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-    border-radius: 10px; /* Radio de borde */
-}
-
-
-
+  }
   

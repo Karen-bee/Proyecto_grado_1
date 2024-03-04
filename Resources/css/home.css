@@ -271,7 +271,8 @@
 .container-footer .section-social .bx{
     font-size: 210%;
     margin-top: 45%;
-    color: #151426;
+    text-decoration: none;
+    color: black;
 }
 
 .copy {
@@ -358,7 +359,7 @@
 .cardBlog strong{
   position: relative;
   top: 20%;
-  max-width: 40%;
+  width: 40%;
   padding: 10px;
   line-height: 1.2; /* Ajusta la altura de línea según sea necesario */
   max-height: 4em; /* 3 líneas de texto con una altura de línea de 1.2 */
@@ -415,11 +416,15 @@
 }
 
 .content-slide-blog .card h5{
-    display: flex;
-    margin-top: 20px;
-    text-align-last: center;
-    justify-content: center;
-    justify-items: center;
+  margin: 0 auto;
+  margin-top: 20px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  text-align: center;
+  width: 100%;
 }
 
 
@@ -551,12 +556,19 @@
     justify-content: center;
     justify-items: center;
 }
-.content-slide-noticias .card h6{
-  display: flex;
-  text-align-last: center;
-  justify-content: center;
-  justify-items: center;
+.content-slide-noticias .card h6 {
+  margin: 0 auto;
+  margin-top: 20px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  text-align: center;
+  width: 100%;
 }
+
+
 
 .content-slide-noticias .card a {
     display: flex;
@@ -682,11 +694,12 @@
 .cardNoticia strong{
   position: relative;
   top: 20%;
-  max-width: 40%;
+  width: 40%;
   padding: 10px;
   line-height: 1.2; /* Ajusta la altura de línea según sea necesario */
   max-height: 4em; /* 3 líneas de texto con una altura de línea de 1.2 */
   overflow: hidden;
+  text-overflow: ellipsis;
   color: black;
 
 }
