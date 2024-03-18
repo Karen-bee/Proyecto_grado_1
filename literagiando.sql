@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-03-2024 a las 02:51:33
+-- Tiempo de generación: 16-03-2024 a las 19:34:55
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -38,8 +38,6 @@ CREATE TABLE `accesos` (
 
 INSERT INTO `accesos` (`id_acceso`, `acceso`) VALUES
 (1, 'Activo'),
-(2, 'Inactivo'),
-(1, 'Activo'),
 (2, 'Inactivo');
 
 -- --------------------------------------------------------
@@ -49,7 +47,7 @@ INSERT INTO `accesos` (`id_acceso`, `acceso`) VALUES
 --
 
 CREATE TABLE `asistencia_eventos` (
-  `idusuario` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
   `ideventos` int(11) NOT NULL,
   `asiste` varchar(2) NOT NULL DEFAULT 'si'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -58,10 +56,9 @@ CREATE TABLE `asistencia_eventos` (
 -- Volcado de datos para la tabla `asistencia_eventos`
 --
 
-INSERT INTO `asistencia_eventos` (`idusuario`, `ideventos`, `asiste`) VALUES
-(51, 31, 'si'),
-(51, 33, 'no'),
-(51, 38, 'si');
+INSERT INTO `asistencia_eventos` (`id_usuario`, `ideventos`, `asiste`) VALUES
+(113, 31, 'si'),
+(113, 39, 'si');
 
 -- --------------------------------------------------------
 
@@ -137,8 +134,6 @@ CREATE TABLE `disponibles` (
 
 INSERT INTO `disponibles` (`id_disponible`, `disponible`) VALUES
 (1, 'Disponible'),
-(2, 'Agotado'),
-(1, 'Disponible'),
 (2, 'Agotado');
 
 -- --------------------------------------------------------
@@ -169,8 +164,6 @@ CREATE TABLE `estados` (
 --
 
 INSERT INTO `estados` (`id_estado`, `estado`) VALUES
-(1, 'Devuelto'),
-(2, 'Prestado'),
 (1, 'Devuelto'),
 (2, 'Prestado');
 
@@ -311,16 +304,11 @@ CREATE TABLE `libros` (
 --
 
 INSERT INTO `libros` (`id_libro`, `titulo`, `autor`, `tema`, `descripcion`, `condicion_libro`, `edades`, `color`, `formato`, `link`, `portada`, `disponible`) VALUES
-(1, 'LOS SECRETOS DE LOS ASESINOS DEL EMPERADOR (CAPÃ�TULO 1)', 'King stephen', 'Novela de terror', 'Lloyd, un hombre que acaba de perder a su mujer, recibe un Â«regaloÂ»  inesperado por parte de su hermana. Laurie, una adorable cachorrilla  mezcla de Border Collie y Mudi, que poco a poco cambiarÃ¡ su vida.', 'Perfectas condiciones', 'De 3 A 8 aÃ±os', '#c0b7a6', 'Fisico', 'https://www.facebook.com/photo/?fbid=452514816891196&set=a.452514776891200?=1', '0234567891.png', 1),
-(2, 'LOS SECRETOS DE LOS ASESINOS DEL EMPERADOR (CAPÃ�TULO 2)', 'Gio morris', 'Novela de turismo', 'Esta es la historia de Toscano y Paula, dos almas gemelas que no se conocen de mucho, pero que se intuyen demasiado. Toscano muere y descubre que, para entrar en el cielo, poco importa lo que hizo en vida.', 'Perfectas condiciones', 'De 9 A 13 aÃ±os', '#e0dcae', 'Digital', 'https://www.facebook.com/photo/?fbid=452514816891196&set=a.452514776891200?=2', '0234567892.png', 1),
-(3, 'LOS SECRETOS DE LOS ASESINOS DEL EMPERADOR (CAPÃ�TULO 3)', 'Ken follett', 'Novela contemporÃ¡nea', 'Este eBook contiene material extra sobre la aclamada trilogÃ­a de Ken  Follett Â«The CenturyÂ»: entrevistas y conversaciones con el autor, vÃ­deos  y material inÃ©dito sobre las familias protagonistas, etc.', 'Perfectas condiciones', 'De 14 A 18 aÃ±os', '#7a696e', 'Fisico', 'https://www.facebook.com/photo/?fbid=452514816891196&set=a.452514776891200?=3', '0234567893.png', 1),
-(4, 'LOS SECRETOS DE LOS ASESINOS DEL EMPERADOR (CAPÃ�TULO 4)', 'King garcia', 'Historia de EspaÃ±a', 'Lloyd, un hombre que acaba de perder a su mujer, recibe un Â«regaloÂ»  inesperado por parte de su hermana. Laurie, una adorable cachorrilla  mezcla de Border Collie y Mudi, que poco a poco cambiarÃ¡ su vida.', 'Perfectas condiciones', 'De 19 A 23 aÃ±os', '#feed01', 'Digital', 'https://www.facebook.com/photo/?fbid=452514816891196&set=a.452514776891200?=4', '0234567894.png', 1),
-(5, 'LOS SECRETOS DE LOS ASESINOS DEL EMPERADOR (CAPÃ�TULO 5)', 'Risto mejide', 'Novela contemporÃ¡nea', 'Esta es la historia de Toscano y Paula, dos almas gemelas que no se conocen de mucho, pero que se intuyen demasiado. Toscano muere y descubre que, para entrar en el cielo, poco importa lo que hizo en vida.', 'Perfectas condiciones', 'De 3 A 8 aÃ±os', '#0491a3', 'Fisico', 'https://www.facebook.com/photo/?fbid=452514816891196&set=a.452514776891200?=5', '0234567895.png', 1),
-(6, 'LOS SECRETOS DE LOS ASESINOS DEL EMPERADOR (CAPÃ�TULO 6)', 'Matt morris', 'Novela histÃ³rica', 'Un hombre que acaba de perder a su mujer, recibe un Â«regaloÂ»  inesperado por parte de su hermana. Laurie, una adorable cachorrilla  mezcla de Border Collie y Mudi, que poco a poco cambiarÃ¡ su vida para siempre.', 'Perfectas condiciones', 'De 9 A 13 aÃ±os', '#5d3d1a', 'Digital', 'https://www.facebook.com/photo/?fbid=452514816891196&set=a.452514776891200?=6', '0234567896.png', 1),
-(7, 'LOS SECRETOS DE LOS ASESINOS DEL EMPERADOR (CAPÃ�TULO 7)', 'Austen jane', 'Historia y Literatura', 'Este eBook contiene material extra sobre la aclamada trilogÃ­a de Ken  Follett Â«The CenturyÂ»: entrevistas y conversaciones con el autor, vÃ­deos  y material inÃ©dito sobre las familias protagonistas, etc.', 'Perfectas condiciones', 'De 14 A 18 aÃ±os', '#7e6e34', 'Fisico', 'https://www.facebook.com/photo/?fbid=452514816891196&set=a.452514776891200?=7', '0234567897.png', 1),
-(8, 'LOS SECRETOS DE LOS ASESINOS DEL EMPERADOR (CAPÃ�TULO 8)', 'Leila cerri', 'Novela espiritualidad', 'Lloyd, un hombre que acaba de perder a su mujer, recibe un Â«regaloÂ»  inesperado por parte de su hermana. Laurie, una adorable cachorrilla  mezcla de Border Collie y Mudi, que poco a poco cambiarÃ¡ su vida.', 'Perfectas condiciones', 'De 19 A 23 aÃ±os', '#a5d2cf', 'Digital', 'https://www.facebook.com/photo/?fbid=452514816891196&set=a.452514776891200?=8', '0234567898.png', 1),
-(9, 'LOS SECRETOS DE LOS ASESINOS DEL EMPERADOR (CAPÃ�TULO 9)', 'Tom y morris', 'Novela de filosofÃ­a', 'Esta es la historia de Toscano y Paula, dos almas gemelas que no se conocen de mucho, pero que se intuyen demasiado. Toscano muere y descubre que, para entrar en el cielo, poco importa lo que hizo en vida.', 'Perfectas condiciones', 'De 3 A 8 aÃ±os', '#cf1123', 'Fisico', 'https://www.facebook.com/photo/?fbid=452514816891196&set=a.452514776891200?=9', '0234567899.png', 1),
-(10, 'LOS SECRETOS DE LOS ASESINOS DEL EMPERADOR (CAPÃ�TULO 10)', 'Gio zararri', 'Novela autoayuda', 'Este eBook contiene material extra sobre la aclamada trilogÃ­a de Ken  Follett Â«The CenturyÂ»: entrevistas y conversaciones con el autor, vÃ­deos  y material inÃ©dito sobre las familias protagonistas, etc.', 'Perfectas condiciones', 'De 9 A 13 aÃ±os', '#fbee61', 'Digital', 'https://www.facebook.com/photo/?fbid=452514816891196&set=a.452514776891200?=10', '0234567890.png', 1);
+(1, 'LOS SECRETOS DE LOS ASESINOS DEL EMPERADOR (CAPÍTULO 1) aaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'King stephen', 'Novela de terror', 'Lloyd, un hombre que acaba de perder a su mujer, recibe un Â«regaloÂ»  inesperado por parte de su hermana. Laurie, una adorable cachorrilla  mezcla de Border Collie y Mudi, que poco a poco cambiarÃ¡ su vida.', 'Perfectas condiciones', 'De 3 A 8 años', '#c0b7a6', 'Fisico', 'https://www.facebook.com/photo/?fbid=452514816891196&set=a.452514776891200?=1', '0234567891.png', 1),
+(2, 'LOS SECRETOS DE LOS ASESINOS DEL EMPERADOR (CAPÍTULO 2)', 'Gio morris', 'Novela de turismo', 'Esta es la historia de Toscano y Paula, dos almas gemelas que no se conocen de mucho, pero que se intuyen demasiado. Toscano muere y descubre que, para entrar en el cielo, poco importa lo que hizo en vida.', 'Perfectas condiciones', 'De 3 A 8 años', '#e0dcae', 'Digital', 'https://www.facebook.com/photo/?fbid=452514816891196&set=a.452514776891200?=2', '0234567892.png', 2),
+(3, 'LOS SECRETOS DE LOS ASESINOS DEL EMPERADOR (CAPÍTULO 3)', 'Ken follett', 'Novela contemporÃ¡nea', 'Este eBook contiene material extra sobre la aclamada trilogía de Ken  Follett «The Century»: entrevistas y conversaciones con el autor, vídeos  y material inédito sobre las familias protagonistas, etc.', 'Perfectas condiciones', 'De 3 A 8 años', '#7a696e', 'Fisico', 'https://www.facebook.com/photo/?fbid=452514816891196&set=a.452514776891200?=3', '0234567893.png', 1),
+(11, 'El arte de la guerra', 'Sun Tzu', 'Arte militar', 'es un libro sobre tácticas y estrategias militares, escrito por Sun Tzu («Maestro Sun»), un famoso estratega militar chino.', 'Perfectas condiciones', 'De 19 A 23 años', '#e30202', 'Fisico', 'https://es.wikipedia.org/wiki/El_arte_de_la_guerra', '65ee1407b62fd.jpg', 1),
+(22, 'El príncipe', 'Nicolás Maquiavelo', 'Política', 'Es un tratado político del siglo xvi del diplomático y teórico político italiano Nicolás Maquiavelo. ', 'Perfectas condiciones', 'De 19 A 23 años', '#530404', 'Fisico', 'https://es.wikipedia.org/wiki/El_pr%C3%ADncipe', '65ee2a1d07813.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -422,7 +410,7 @@ CREATE TABLE `pagina` (
   `nombre_pagina` varchar(200) NOT NULL,
   `url_pagina` varchar(200) NOT NULL,
   `class` varchar(20) DEFAULT 'bx-grid-alt',
-  `estado_pagina` varchar(200) NOT NULL,
+  `estado_pagina` int(2) NOT NULL,
   `roluser_id` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -431,16 +419,19 @@ CREATE TABLE `pagina` (
 --
 
 INSERT INTO `pagina` (`id_pagina`, `nombre_pagina`, `url_pagina`, `class`, `estado_pagina`, `roluser_id`) VALUES
-(1, 'Dashboard', '/Literagiando/Views/Dashboard.php', 'bx-grid-alt', '1', 1),
-(2, 'Admin Eventos', '/Literagiando/Views/EventosAdmin/index.php', 'bx-calendar-edit', '1', 1),
-(3, 'Admin Noticias', '/Literagiando/Views/NoticiasAdmin/index.php', 'bx-chat', '1', 1),
-(4, 'Admin Blog', '/Literagiando/Views/BlogAdmin/index.php', 'bxl-blogger', '1', 1),
-(5, 'Admin Slider', '/Literagiando/Views/SliderAdmin/index.php', 'bx-slideshow', '1', 1),
-(6, 'Biblioteca', '/Literagiando/literagiando59/login.php', 'bx-library', '1', 2),
-(7, 'Roles', '/Literagiando/Views/Roles/index.php', 'bx-anchor', '1', 1),
-(8, 'Admin Usuarios', '/Literagiando/Views/UserAdmin/index.php', 'bx-user', '1', 1),
-(9, 'Mis Eventos', '/Literagiando/Views/MisEventos/index.php', 'bx-calendar', '1', 2),
-(10, 'Admin Sobre Nosotros\r\n', '/Literagiando/Views/HomeAdmin/sobreNosotros.php', 'bx-grid-alt', '1', 1);
+(1, 'Dashboard', '/Literagiando/Views/Dashboard.php', 'bx-grid-alt', 1, 1),
+(2, 'Admin Eventos', '/Literagiando/Views/EventosAdmin/index.php', 'bx-calendar-edit', 1, 1),
+(3, 'Admin Noticias', '/Literagiando/Views/NoticiasAdmin/index.php', 'bx-chat', 1, 1),
+(4, 'Admin Blog', '/Literagiando/Views/BlogAdmin/index.php', 'bxl-blogger', 1, 1),
+(5, 'Admin Slider', '/Literagiando/Views/SliderAdmin/index.php', 'bx-slideshow', 1, 1),
+(6, 'Biblioteca', '/Literagiando/literagiando59/login.php', 'bx-library', 1, 2),
+(7, 'Roles', '/Literagiando/Views/Roles/index.php', 'bx-anchor', 1, 1),
+(8, 'Admin Usuarios', '/Literagiando/Views/UserAdmin/index.php', 'bx-user', 1, 1),
+(9, 'Mis Eventos', '/Literagiando/Views/MisEventos/index.php', 'bx-calendar', 1, 2),
+(10, 'Admin Sobre Nosotros\r\n', '/Literagiando/Views/HomeAdmin/sobreNosotros.php', 'bx-grid-alt', 1, 1),
+(11, 'Administrar préstamos', '/Literagiando/Views/prestamosAdmin/index.php', 'bx-food-menu', 1, 1),
+(12, 'Administrar libros', '/Literagiando/Views/LibrosAdmin/index.php', 'bxs-food-menu', 1, 1),
+(13, 'Crear históricos', '/Literagiando/Views/Historicos/', 'bxs-file-pdf', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -478,6 +469,17 @@ CREATE TABLE `prestamos` (
   `estado` bigint(20) NOT NULL,
   `permiso` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `prestamos`
+--
+
+INSERT INTO `prestamos` (`id_prestamo`, `id_usuario`, `id_libro_1`, `id_libro_2`, `id_libro_3`, `fecha_prestamo`, `fecha_devolucion`, `estado`, `permiso`) VALUES
+(2, 51, 22, NULL, NULL, '2024-03-10', '2024-03-25', 2, 2),
+(3, 113, 22, NULL, NULL, '2024-03-11', '2024-03-26', 1, 1),
+(4, 113, 5, 11, 22, '2024-03-11', '2024-03-26', 1, 1),
+(5, 113, 3, 11, 22, '2024-03-15', '2024-03-30', 1, 1),
+(6, 113, 1, NULL, NULL, '2024-03-15', '2024-03-30', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -535,11 +537,13 @@ INSERT INTO `roles_permisos` (`idrol`, `id_pagina`) VALUES
 (1, 3),
 (1, 4),
 (1, 5),
-(1, 6),
 (1, 7),
 (1, 8),
 (1, 9),
 (1, 10),
+(1, 11),
+(1, 12),
+(1, 13),
 (2, 1),
 (2, 6),
 (2, 9);
@@ -566,7 +570,7 @@ INSERT INTO `servicios` (`id_servicios`, `tipo_servicios`, `detalle_servicio`, `
 (1, 'Material', 'This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.', '/../Literagiando/Storage/img-home/1707894830912_Libro.png', 1),
 (2, 'Referencias', 'This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.', '/../Literagiando/Storage/img-home/1707894830912_Libro.png', 1),
 (3, 'Apoyo', 'This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.\r\n', '/../Literagiando/Storage/img-home/mano.png', 1),
-(4, 'Estudiantes', 'This content is a little bit longer. This is a longer card with supporting text below as a natural lead-in to additional content. \r\n', '/../Literagiando/Storage/img-home/waiter.png', 1);
+(4, 'Estudiantes', 'This content is a little bit longer. This is a longer card with supporting text below as a natural lead-in to additional content. \r\nThis content is a little bit longer. This is a longer card with supporting text below as a natural lead-in to additional content. \r\nThis content is a little bit longer. This is a longer card with supporting text below as a natural lead-in to additional content. ', '/../Literagiando/Storage/img-home/waiter.png', 1);
 
 -- --------------------------------------------------------
 
@@ -608,8 +612,7 @@ CREATE TABLE `sobre_nosotros` (
 --
 
 INSERT INTO `sobre_nosotros` (`id`, `nombre`, `cargo`, `facultad`, `imagen`) VALUES
-(1, 'dsierrabl', 'profesora', 'colegio', '/Literagiando/Storage/img-home/User.png'),
-(2, 'Diana Carolina Alberto Chapelles', 'Profesor', 'Facultad de Humanidades y Ciencias de la Educación', '/Literagiando/Storage/img-home/erika.png');
+(2, 'Diana Carolina Alberto Chapelles', 'Profesor', 'Facultad de Humanidades y Ciencias de la Educación', '/../Literagiando/Storage/img-home/erika.png');
 
 -- --------------------------------------------------------
 
@@ -720,7 +723,7 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`identificacion`, `id_usuario`, `nombre_completo`, `direccion_usuario`, `telefono`, `usuario`, `correo`, `password`, `estado`, `foto_perfil`, `fecha_registro`, `idtipodedocumento`, `rol`, `sexo`, `acceso`) VALUES
 (2147483647, 48, 'Erika Estupiñan', 'Carrera 69f #64h-19', 5676866878, 'Erika1131', 'lorena@gmail.com', '$2y$10$njzM/DUcQ8jtyITH84fDCulBKk2tZt5SU8.iu7cQ9t0E6ZLYOqzfy', 1, '/Literagiando/Resources/img/User.png', '2024-03-02 14:42:54', 1, 1, 'Femenino', 1),
 (123456, 49, 'Deyner Sanchez', 'Diagonal 92 #17 a-42', 573204501963, 'Dei0707', 'ext.deyner.sanchez@colgas.com', '$2y$10$ujV6C5X3YUpab7qaS0AbVudwtdoaNG6hcJSqc2rECRnpBWCliUwrW', 0, '/Literagiando/Resources/img/User.png', '2024-03-02 14:42:54', 1, 2, 'Masculino', 0),
-(12, 51, 'daniel sierra blanco', 'cr 99 # 89', 3214634549, 'dsierrabl', 'mr.danielsi18@gmail.com', '$2y$10$eIt5l1.7JmRjwZnKgs7iaOPbDxTzxuBC/UCToau5gurMCooLWHOwW', 1, '/Literagiando/Resources/img/User.png', '2024-03-04 00:47:44', 1, 1, 'Femenino', 1),
+(12, 51, 'daniel sierra blanco', 'cr 99 # 89', 3214634549, 'dsierrabl', 'mr.danielsi18@gmail.com', '$2y$10$vVyceYRCw9bLpXN5vHSGjOrIktnRdNst9jOs4q/gte.JMSnq0oG9a', 1, '/Literagiando/Resources/img/User.png', '2024-03-16 18:32:27', 1, 1, 'Femenino', 1),
 (1212, 52, 'daniel', 'cr 77 ', 32146345491231, 'carlitos perez', 'dsierrabl@unal.edu.co', '$2y$10$ggIap0VzjmqzvL5.SQQ7u.31LGEVimDG8S2TsZrMdeNkkuSTH07hi', 1, '/Literagiando/Resources/img/User.png', '2024-03-02 14:42:54', 1, 1, 'Femenino', 1),
 (1020, 67, 'carlos', 'cr 99', 573204501963, 'sin nick', 'lorasa@gmail.com', '$2y$10$yCNPV/tX4WNbx/Vdb/yjVujnbtGmjazuPC8Yn47Yn5cR9YOOvBOAm', 1, '/Literagiando/Resources/img/User.png', '2024-03-02 14:42:54', 5, 26, 'Femenino', 1),
 (11, 113, 'pepito perez', 'cr 77 # 48 a ', 3124562112, 'nick2', '0@gmail.com', '$2y$10$C9iLH4a6gL7IiZtbqc/.LuR9rIBuBzoPMTbfHxugohSAYkH519GUK', 1, '/Literagiando/Resources/img/User.png', '2024-03-03 04:06:56', 1, 2, 'Femenino', 1),
@@ -738,49 +741,22 @@ END
 $$
 DELIMITER ;
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuarios`
---
-
-CREATE TABLE `usuarios` (
-  `id_usuario` bigint(20) NOT NULL,
-  `rol` int(11) NOT NULL DEFAULT 2,
-  `identificacion` bigint(20) NOT NULL,
-  `nombre_completo` varchar(50) NOT NULL,
-  `sexo` varchar(10) NOT NULL,
-  `telefono` bigint(20) NOT NULL,
-  `correo` varchar(65) DEFAULT NULL,
-  `usuario` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `foto_perfil` varchar(76) NOT NULL,
-  `fecha_creacion` date NOT NULL,
-  `estado` int(2) NOT NULL DEFAULT 1,
-  `direccion_usuario` varchar(100) NOT NULL,
-  `idtipodedocumento` int(11) NOT NULL,
-  `acceso` bigint(20) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
-
---
--- Volcado de datos para la tabla `usuarios`
---
-
-INSERT INTO `usuarios` (`id_usuario`, `rol`, `identificacion`, `nombre_completo`, `sexo`, `telefono`, `correo`, `usuario`, `password`, `foto_perfil`, `fecha_creacion`, `estado`, `direccion_usuario`, `idtipodedocumento`, `acceso`) VALUES
-(1, 1, 1143970700, 'Erik Andres Cortes Moreno', 'Masculino', 3176432032, 'conerikcortes@gmail.com', 'conerikcortes', '$2y$10$7o732JswEZI.YjsQ5GoFUe24F6H0/xtLLAElFMgxpXns4UAaI7tvq', 'conerikcortes.jpg', '2023-11-01', 1, '', 0, 1),
-(2, 2, 1143970702, 'Laura Dayana Triana Perez', 'Femenino', 3176432002, 'latibeiffetou-2435@gmail.com', 'laura', '$2y$10$7o732JswEZI.YjsQ5GoFUe24F6H0/xtLLAElFMgxpXns4UAaI7tvq', '0234567890.png', '2023-11-01', 1, '', 0, 1),
-(6, 2, 1234567890, 'pepito perez', '', 32145634549, 'mr.dani10@gmail.com', 'nick', '$2y$10$CyNTwITGed3iZeJoMc3Jp.QWFaRNB13.Lsn1aF3aHzBFFvkV2ZlMi', '', '0000-00-00', 0, 'cr 77 ', 1, 1);
-
 --
 -- Índices para tablas volcadas
 --
 
 --
+-- Indices de la tabla `accesos`
+--
+ALTER TABLE `accesos`
+  ADD PRIMARY KEY (`id_acceso`);
+
+--
 -- Indices de la tabla `asistencia_eventos`
 --
 ALTER TABLE `asistencia_eventos`
-  ADD PRIMARY KEY (`idusuario`,`ideventos`),
-  ADD KEY `idusuario` (`idusuario`,`ideventos`),
+  ADD PRIMARY KEY (`id_usuario`,`ideventos`),
+  ADD KEY `idusuario` (`id_usuario`,`ideventos`),
   ADD KEY `ideventos` (`ideventos`);
 
 --
@@ -806,11 +782,23 @@ ALTER TABLE `categoria`
   ADD PRIMARY KEY (`idcategoria`);
 
 --
+-- Indices de la tabla `disponibles`
+--
+ALTER TABLE `disponibles`
+  ADD PRIMARY KEY (`id_disponible`);
+
+--
 -- Indices de la tabla `duracion_prestamo`
 --
 ALTER TABLE `duracion_prestamo`
   ADD PRIMARY KEY (`idfechaduracion`),
   ADD KEY `codigo_producto` (`codigo_producto`);
+
+--
+-- Indices de la tabla `estados`
+--
+ALTER TABLE `estados`
+  ADD PRIMARY KEY (`id_estado`);
 
 --
 -- Indices de la tabla `eventos`
@@ -845,6 +833,18 @@ ALTER TABLE `imagenes_home`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `libros`
+--
+ALTER TABLE `libros`
+  ADD PRIMARY KEY (`id_libro`);
+
+--
+-- Indices de la tabla `marcos`
+--
+ALTER TABLE `marcos`
+  ADD PRIMARY KEY (`id_marco`);
+
+--
 -- Indices de la tabla `noticias`
 --
 ALTER TABLE `noticias`
@@ -864,6 +864,12 @@ ALTER TABLE `objetivos`
 ALTER TABLE `pagina`
   ADD PRIMARY KEY (`id_pagina`),
   ADD KEY `roluser_id` (`roluser_id`);
+
+--
+-- Indices de la tabla `prestamos`
+--
+ALTER TABLE `prestamos`
+  ADD PRIMARY KEY (`id_prestamo`);
 
 --
 -- Indices de la tabla `productos`
@@ -940,13 +946,6 @@ ALTER TABLE `usuario`
   ADD KEY `idrolusuario` (`rol`);
 
 --
--- Indices de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id_usuario`),
-  ADD KEY `fk_idrol` (`rol`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -1005,6 +1004,12 @@ ALTER TABLE `imagenes_home`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
+-- AUTO_INCREMENT de la tabla `libros`
+--
+ALTER TABLE `libros`
+  MODIFY `id_libro` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
 -- AUTO_INCREMENT de la tabla `noticias`
 --
 ALTER TABLE `noticias`
@@ -1020,13 +1025,19 @@ ALTER TABLE `objetivos`
 -- AUTO_INCREMENT de la tabla `pagina`
 --
 ALTER TABLE `pagina`
-  MODIFY `id_pagina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_pagina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT de la tabla `prestamos`
+--
+ALTER TABLE `prestamos`
+  MODIFY `id_prestamo` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `idrol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `idrol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT de la tabla `servicios`
@@ -1044,7 +1055,7 @@ ALTER TABLE `sobrenosotros`
 -- AUTO_INCREMENT de la tabla `sobre_nosotros`
 --
 ALTER TABLE `sobre_nosotros`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `tipoblog`
@@ -1077,12 +1088,6 @@ ALTER TABLE `usuario`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id_usuario` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
 -- Restricciones para tablas volcadas
 --
 
@@ -1091,7 +1096,7 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `asistencia_eventos`
   ADD CONSTRAINT `asistencia_eventos_ibfk_2` FOREIGN KEY (`ideventos`) REFERENCES `eventos` (`ideventos`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `asistencia_eventos_ibfk_3` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`id_usuario`);
+  ADD CONSTRAINT `asistencia_eventos_ibfk_3` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
 -- Filtros para la tabla `blog`
@@ -1150,12 +1155,6 @@ ALTER TABLE `roles_permisos`
 --
 ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`idtipodedocumento`) REFERENCES `tipodocumento` (`idtipodocumento`);
-
---
--- Filtros para la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `fk_idrol` FOREIGN KEY (`rol`) REFERENCES `roles` (`idrol`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

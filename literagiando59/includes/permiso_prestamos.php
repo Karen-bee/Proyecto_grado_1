@@ -9,8 +9,11 @@
 		
 		if ($permiso_prestamos > 0) {
 			// Si existe al menos un registro con "permiso" igual a 2, redirigir al usuario
-			header('Location: home.php');
-			exit;
+			echo '<script>
+                alert("Ya tiene un préstamo vigente, deberá hacer la entrega para solicitar otro préstamo");
+                window.location= "home.php"</script>';
+			//header('Location: home.php');
+			//exit;
 		} else {
 			// Si no hay registros con "permiso" igual a 2, el usuario permanece en la página actual
 		}

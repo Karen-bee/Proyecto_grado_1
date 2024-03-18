@@ -1,6 +1,6 @@
 <?php
 // Sesión
-require_once('../includes/session_staff.php');
+//require_once('../includes/session_staff.php');
 
 // Include
 require_once('../includes/includes.php');

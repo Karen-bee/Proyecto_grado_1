@@ -21,7 +21,7 @@ if (isset($_POST["btnSubmit"])) {
         $password = $_POST["password"];
 
         // Consulta preparada para prevenir inyección SQL
-        $stmt = $conexion->prepare("SELECT rol, password, estado, id_usuario FROM usuario WHERE correo=?");
+        $stmt = $conexion->prepare("SELECT rol, password, estado, id_usuario FROM usuario WHERE (correo=? ) ");
         $stmt->bind_param("s", $correo);
         $stmt->execute();
         $result = $stmt->get_result();

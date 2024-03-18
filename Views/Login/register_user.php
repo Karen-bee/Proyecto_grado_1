@@ -49,7 +49,7 @@
 
                 <div class="col">
                     <label for="identificacion"><i class="bi bi-fingerprint"></i> N°. Documento</label>
-                    <input required type="number" name="identificacion" id="identificacion" class="form-control">
+                    <input required type="number" oninput="limitarCaracteres(this, 10)" name="identificacion" id="identificacion" class="form-control">
                 </div>
 
                 <div class="col">
@@ -63,7 +63,7 @@
 
                 <div class="col">
                     <label for="telefono"><i class="bi bi-telephone"></i> Telefono</label>
-                    <input required type="number" name="telefono" id="telefono" class="form-control">
+                    <input required type="number" oninput="limitarCaracteres(this, 10)" name="telefono" id="telefono" class="form-control">
                 </div>
 
                 <div class="col">
@@ -106,7 +106,11 @@
 </html>
 
 <script>
-  
+  function limitarCaracteres(elemento, limite) {
+    if (elemento.value.length > limite) {
+        elemento.value = elemento.value.slice(0, limite);
+    }
+  }
   $(document).ready(function() {
     // Función para validar la contraseña
     function validarContrasena() {

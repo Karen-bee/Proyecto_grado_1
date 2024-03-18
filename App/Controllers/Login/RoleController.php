@@ -72,6 +72,32 @@ class RoleController {
         return $this->respuesta;
     }
 
+
+    public function EliminarRolController($datos) {
+        try {
+            $resultados = $this->roleModel->EliminarRolModel($datos);
+    
+            if ($resultados) {
+                $this->respuesta = array(
+                    "state" => false,
+                    "mensaje" => $resultados
+                );
+            } else {
+                $this->respuesta = array(
+                    'state' 	=> true,
+                    'mensaje' 	=> $resultados
+                );
+            }
+        } catch (Exception $ex) {
+            $this->respuesta = array(
+                "state" => false,
+                "mensaje" => $ex->getMessage()
+            );
+        }
+    
+        return $this->respuesta;
+    }
+
     public function NuevoRolController($datos) {
         try {
             $resultados = $this->roleModel->NuevoRolModel($datos);

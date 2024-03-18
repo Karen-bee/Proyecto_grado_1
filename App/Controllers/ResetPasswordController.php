@@ -6,14 +6,14 @@ var_dump($Url); // Cambiado de $url a $Url
 
 
 function validarContrasena($contrasena) {
-    if (strlen($contrasena) > 8) {
+    if (strlen($contrasena) >= 8) {
         if (preg_match('/[^a-zA-Z0-9]/', $contrasena)) {
             return "pass";
         } else {
-            return "'La contrasena debe contener al menos un caracter especial.'";
+            return "La contrasena debe contener al menos un caracter especial";
         }
     } else {
-        return "'La contrasena debe tener más de 8 caracteres.'";
+        return "La contrasena debe tener más de 8 caracteres.";
     }
 }
 
@@ -24,31 +24,27 @@ if (isset($_POST["reset_password"]) && isset($_GET["email_consulta"])) {
     $confirmar_contraseña = $_POST["confirmar_contraseña"];
         // Validación de contraseñas
     $password = validarContrasena($nueva_contraseña);
-    if($password != "pass"){
-        $escapedConsulta = ($password);
-        ?>
+    if ($password !== "pass") {
+        $escapedConsulta = ($password); // Escapa la contraseña
         
-        <script>
-            var consulta = <?php echo $escapedConsulta; ?>;
-            alert(consulta);
-        </script>
-
-        <?php
-
         $pagina_anterior = $_SERVER['HTTP_REFERER'];
-            //header("Location: $pagina_anterior");
-
-        $conexion->close();
-
-        exit;
-    }else{
+        
+        echo '<script> alert("'.$escapedConsulta.'");window.location= "'.$pagina_anterior.'"</script>'; // Muestra la contraseña escapada en un alert
+        
+        //header("Location: $pagina_anterior"); // Redirige de vuelta a la página anterior
+        
+        $conexion->close(); // Cierra la conexión a la base de datos
+        
+        return ; // Detiene la ejecución del script
+    }
+    else{
         if ($nueva_contraseña != $confirmar_contraseña) {
             echo '<script>
             alert("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.");
             </script>';
 
             $pagina_anterior = $_SERVER['HTTP_REFERER'];
-            //header("Location: $pagina_anterior");
+            header("Location: $pagina_anterior");
 
             $conexion->close();
 

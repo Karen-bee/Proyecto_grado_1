@@ -2,7 +2,7 @@
 	ob_start();
 	
 	// Sesión
-	require_once('../includes/session_staff.php');
+	//require_once('../includes/session_staff.php');
 	
 	// Include
 	require_once('../includes/includes.php');
@@ -395,7 +395,7 @@
 			exit;
 		} else {
 			// Mover la imagen al directorio
-			$rutaGuardada = "../recursos/img/portadas/" . $nombreImagen;
+			$rutaGuardada = "../../literagiando59/recursos/img/portadas/" . $nombreImagen;
 			move_uploaded_file($portadatemp, $rutaGuardada);
 		
 			// Insertar los datos en la tabla libros con el nombre único de la imagen

@@ -61,6 +61,47 @@ function NuevoEvento() {
     }
 }
 
+function Editar() {
+    if (
+        isset($_POST['nombre']) &&
+        isset($_POST['cargo']) &&
+        isset($_POST['facultad'])&&
+        isset($_POST['id'])
+    ) {
+        // Validar y filtrar datos según sea necesario
+
+        $homeController = new HomeController();
+
+        $datos = array(
+            "nombre" => $_POST['nombre'],
+            "cargo" => $_POST['cargo'],
+            "facultad" => $_POST['facultad'],
+            "id" => $_POST['id']
+        );
+
+        $respuesta = $homeController->editarPersona($datos);
+
+        if ($respuesta['state'] == true) {
+            echo "Registro Guardado";
+            echo "<pre>";
+            print_r($_POST);
+            print_r($respuesta['resultado']);
+            echo "</pre>";
+            header("Location: /Literagiando/Views/HomeAdmin/sobreNosotros.php");
+            exit;
+        } else {
+            echo "Error al guardar el registro";
+        }
+    } else {
+        echo "Datos incompletos para guardar el registro";
+        echo "<pre>";
+        print_r($_POST);
+        echo "</pre>";
+        //header("Location: /Literagiando/Views/HomeAdmin/sobreNosotros.php");
+
+    }
+}
+
 function NuevaEntrada() {
     unset($_POST['accion']);
     $datos = $_POST;

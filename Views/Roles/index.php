@@ -26,8 +26,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 if($roles['state']==1){
   $roles = $roles['roles'];
 }else{
-  alert("error al obtener datos");
+  echo '<script>alert("error al obtener datos")</script>';
 }
+
+function compareRoles($a, $b) {
+  return $a['idrol'] - $b['idrol'];
+}
+
+usort($roles, 'compareRoles');
 
 $busqueda = isset($_GET['busqueda']) ? $_GET['busqueda'] : null;
 if($busqueda){
@@ -58,6 +64,9 @@ $fin = $rolesPorPagina * $paginaActual;
 // Obtener los roles para la página actual
 $roles = array_slice($roles, $inicio, $fin - $inicio);
 
+
+
+
 function actualizarPaginacion($totalPaginas,$paginaActual) {
   echo '<ul class="pagination">';
   for ($i = 1; $i <= $totalPaginas; $i++) {
@@ -75,6 +84,7 @@ function actualizarPaginacion($totalPaginas,$paginaActual) {
   echo '</ul>';
 }
 
+$vistaActual = 7;
 
 
 include '../Layouts/header.php';
@@ -124,7 +134,7 @@ include '../Roles/edit.php';
       <a href="?accion=editar&nombre_rol=<?php echo $role['nombre_rol']; ?>&idrol=<?php echo $role['idrol']; ?>" class="btn btn-outline-dark btn-sm">
           <i class='bx bxs-edit'></i>
       </a>  
-        <!--<a href="/Routes/RolRouter.php?accion=eliminarPermiso" class="btn btn-outline-danger btn-sm"><i class='bx bx-trash'></i></a>-->
+      <a href="../../Routes/RolRouter.php?action=eliminarRol&idrol=<?php echo $role['idrol']; ?>" class="btn btn-outline-danger btn-sm"><i class='bx bx-trash'></i></a>
       </td>
     </tr>
    <?php 
@@ -136,11 +146,11 @@ include '../Roles/edit.php';
 <div class="peg-button-arrow">
 
 <div class="col-4" id="page">
-            <nav aria-label="Page navigation example">
-              <ul class="pagination">
-                <?php actualizarPaginacion($totalPaginas,$paginaActual)?>
-              </ul>
-            </nav>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <?php actualizarPaginacion($totalPaginas, $paginaActual) ?>
+  </ul>
+</nav>
 </div>
 
 </div>

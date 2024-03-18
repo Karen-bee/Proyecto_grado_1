@@ -1,5 +1,5 @@
 <?php
-
+$vistaActual = 2;
 require_once (__DIR__ . '/../../App/Controllers/EventoController.php');
 $eventoController = new EventoController();
 $eventos = $eventoController->ObtenerTodosEventosController();
@@ -11,8 +11,9 @@ $busqueda = isset($_GET['busqueda']) ? $_GET['busqueda'] : null;
 if($eventos['state']==1){
   $eventos = $eventos['eventos'];
 }else{
-  alert("error al obtener datos");
+  echo '<script>alert("error al obtener datos")</script>';
 }
+
 
 if($busqueda){
 

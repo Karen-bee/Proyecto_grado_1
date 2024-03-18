@@ -6,6 +6,8 @@ $permisos = $permisoController->ObtenerPermisoController();
 ?>
 <?php 
 
+$vistaActual = 8;
+
 include '../Layouts/header.php';
 
 ?>

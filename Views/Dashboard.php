@@ -1,4 +1,8 @@
-<?php include './Layouts/header.php';?>
+<?php 
+
+$vistaActual = 1;
+
+include './Layouts/header.php';?>
 
     
 

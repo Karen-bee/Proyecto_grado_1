@@ -26,12 +26,19 @@ if ($accion) {
       </div>
       <div class="modal-body">
         <!-- Formulario de edición -->
+        <form id="formEditarRolName" action="/Literagiando/Routes/RolRouter.php" method="post">
+          <input type="hidden" name="idrol" id="idrol2" value="<?php echo $rolActivo ?>">
+          <label for="nombre_rol" class="form-label">Nombre/Rol:</label>
+          <input type="text" id="accion2" name="action" value="editar" hidden>
+          <input type="text" class="form-control" id="nombre_rol2" name="nombre_rol"  value="<?php echo $nombre_rol ?>"required>
+          <br>
+          <button class="btn butn-primary" type="submit">Cambiar Nombre</button>
+        </form>
+        <!-- Formulario de edición -->
         <form id="formEditarRol" action="/Literagiando/Routes/RolRouter.php" method="post">
           <input type="hidden" name="idrol" id="idrol" value="<?php echo $rolActivo ?>">
-          <label for="nombre_rol" class="form-label">Nombre/Rol:</label>
           <input type="text" id="accion" name="action" value="eliminarPermiso" hidden>
-          <input type="text" id="idpagina" name="id_pagina"  hidden>
-          <input type="text" class="form-control" id="nombre_rol"  value="<?php echo $nombre_rol ?>"required readonly>
+          <input type="text" id="idpagina" name="id_pagina" hidden>
           <br>
           <table class="table table-striped table-hover">
             <thead>

@@ -58,6 +58,36 @@ class RoleModel {
         }
     }
 
+    public function EliminarRolModel($datos) {
+        // Validar y limpiar datos
+        $idrol = (int) $datos['idrol'];
+    
+        // Preparar la consulta
+        $consulta = "DELETE FROM roles WHERE idrol = :prm_idrol";
+    
+        // Parámetros
+        $parametros = array(
+            "prm_idrol" => $idrol
+        );
+    
+        // Intentar ejecutar la consulta
+        try {
+            $respuesta = $this->conexion->EjecutarSPConParams($consulta, $parametros);
+    
+            if ($respuesta === false) {
+                // Manejar el error, por ejemplo, lanzar una excepción o devolver un código de error.
+                throw new Exception("Error al eliminar el rol.");
+            }
+    
+            // Todo ha ido bien
+            return $respuesta;
+        } catch (Exception $e) {
+            // Manejar la excepción, por ejemplo, loggear el error.
+            error_log('Error al eliminar el rol: ' . $e->getMessage());
+            return $e->getMessage();
+        }
+    }
+
     public function NuevoRolModel($datos) {
         $nombreRol = htmlspecialchars($datos['nombre_rol'], ENT_QUOTES, 'UTF-8');
     

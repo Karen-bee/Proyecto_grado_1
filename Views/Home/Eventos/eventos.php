@@ -97,6 +97,7 @@ if($filtroTipo!=="--Seleccione--"){
     <div class="row align-items-start">
         <div class="col-3">
             <div class="group-btn-filter">
+                <br>
                 <strong>¿Cuándo se realizará?</strong>
                 <br>
                 <form action="" method="GET" style="display: inline;">
@@ -124,7 +125,7 @@ if($filtroTipo!=="--Seleccione--"){
                 </form>
             </div>
 
-
+            <br>
 
             <!---- Calendario ------>
 
@@ -179,7 +180,7 @@ if($filtroTipo!=="--Seleccione--"){
             <?php  if(count($eventos) > 0){foreach ($eventos as $evento) { 
                     ?>
                     <div class="card col-md-4">
-                        <img src="<?php echo $evento['imagen_eventos'];?>" class="card-img-top" alt="...">
+                        <img src="<?php echo $evento['imagen_eventos'];?>" class="card-imgE" alt="...">
                         <div class="card-body">
                         <h5 class="card-title"><Strong><?php echo $evento['tipoevento'];?></Strong></h5>
                         <p class="card-text"><?php echo $evento['detalle_evento'];?></p>

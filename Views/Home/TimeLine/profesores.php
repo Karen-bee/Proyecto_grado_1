@@ -17,11 +17,22 @@ if($sobre_nosotros['state'] === true){
 
 
 <div class="container-profesores">
-
     <div class="col-4">
+        
+    <?php if(count($sobre_nosotros) > 2) { ?>
         <div class="title-equipo">
-            <h1>Nuestro <p>Equipo</p></h1>
+            <h1>Nuestro &nbsp;Equipo</h1>
         </div>
+    <?php } else if(count($sobre_nosotros) == 1) { ?>
+        <div class="title-equipo" style="top: 0">
+            <h1>Nuestro &nbsp;Equipo</h1>
+        </div>
+    <?php } else { ?>
+        <div class="title-equipo" style="top: 10%">
+            <h1>Nuestro &nbsp;Equipo</h1>
+        </div>
+    <?php } ?>
+
     </div>
     
     <div class="col-8">       

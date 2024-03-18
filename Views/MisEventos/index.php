@@ -1,7 +1,8 @@
 <?php 
-
 require_once (__DIR__ . '/../../App/Controllers/EventoController.php');
 $eventoController = new EventoController();
+
+$vistaActual = 9;
 
 include '../Layouts/header.php';
 
@@ -12,7 +13,11 @@ $eventos = $eventoController->ObtenerMisEventosController($row['id_usuario']);
 if($eventos['state']==1){
   $eventos = $eventos['eventos'];
 }else{
-  alert("error al obtener datos");
+  echo '<script>alert("error al obtener datos")</script>';
+}
+
+if($eventos==''){
+  echo '<script>alert("error al obtener datos")</script>';
 }
 
 $busqueda = isset($_GET['busqueda']) ? $_GET['busqueda'] : null;

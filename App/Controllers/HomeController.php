@@ -115,6 +115,23 @@ class HomeController extends HomeModel{
 
         return $this->respuesta;
     }
+
+    public function editarPersona($datos){
+        try {
+            $resultados = $this->eventModel->editarSobre_nosotros($datos);
+            $this->respuesta = array(
+                "state" => true,
+                "resultado" => $resultados
+            );
+        } catch (PDOException $pdoEx) {
+            $this->respuesta = array(
+                "state" => false,
+                "mensaje" => $pdoEx->getMessage()
+            );
+        }
+
+        return $this->respuesta;
+    }
     public function NuevaFila($datos){
         try {
             $resultados = $this->eventModel->NuevaFilaModel($datos);

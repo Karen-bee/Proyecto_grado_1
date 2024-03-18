@@ -782,12 +782,20 @@
   .content-event .card-group {
     display: flex;
     flex-wrap:wrap;
+    width: 100%;
+  }
+  .content-event .card-group .row{
+    width: 100%;
   }
 
   .content-event .card-group .card {
     margin: 10px 10px;
-    width: 30%;
-    max-height: 500px;
+    max-width: 30%;
+    height: 500px;
+  }
+  .card-imgE{
+    height: 200px !important;
+    padding-top: 10px;
   }
 
   .content-event .card-group .card:hover {
@@ -1377,11 +1385,19 @@
     display: flex;
     justify-content: center;
     justify-items: center;
-    margin-top: 50px;
-    padding: 15px 20px;
+    margin-top: 5px;
+    padding: 2px 0px;
     margin-left: 50%;
     transform: translateX(-50%);
   }
+
+  .card-img-top2 {
+    margin-top: auto;
+    margin-bottom: auto;
+    display: block; /* Asegúrate de que la imagen se muestre como un bloque */
+    height: 200px;
+}
+
 
   /*====CSS Profesores=========*/
 
@@ -1402,7 +1418,7 @@
     }
 
     .container-profesores .col-4 {
-      width: 20.333333%;
+      width: 230px;
     }
 
     .container-profesores .col-4 .title-equipo {
@@ -1414,7 +1430,7 @@
       background: orange;
       color: white;
       position: relative;
-      margin-left: 90px;
+      margin-left: 60px;
       width: 100%;
       height: 400px;
       position: relative;
@@ -1423,8 +1439,9 @@
 
     .container-profesores .col-4 h1 {
       font-size: 80%;
-      margin-left: 50px;
-      margin-top: 130px;
+      margin-left: 20px;
+      margin-top: 160px;
+      
     }
 
     .container-profesores .card-info {

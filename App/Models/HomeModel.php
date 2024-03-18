@@ -84,7 +84,35 @@ class HomeModel {
         }
     }
     
-
+    public function editarSobre_nosotros($datos){
+        $consulta = "UPDATE Sobre_nosotros SET nombre = :prm_nombre , cargo =  :prm_cargo , facultad = :prm_facultad , imagen = :imagen WHERE  `id`=:prm_id";
+        
+        $imageDirectory = '../../Literagiando/Storage/img-home/'; 
+        $uploadedFile = $_FILES['imagen']['tmp_name'];
+        $imageFileName = $_FILES['imagen']['name'];
+        $imageFilePath = $imageDirectory . $imageFileName;
+        
+    
+        if (move_uploaded_file($uploadedFile, $imageFilePath)) {
+    
+            $parametros = array(
+                "prm_nombre" => $datos['nombre'],
+                "prm_cargo" => $datos['cargo'],
+                "prm_facultad" => $datos['facultad'],
+                "prm_id" => $datos["id"] ,
+                "imagen" => substr($imageFilePath,2) 
+            );
+    
+            $respuesta = $this->conexion->EjecutarSPConParams($consulta, $parametros);
+            return $respuesta;
+        } else {
+            $respuesta = array(
+                "state" => false,
+                "mensaje" => "Error al cargar la Imagen."
+            );
+            return $respuesta;
+        }
+    }
     
     
     public function editarSobreNosotros($datos){

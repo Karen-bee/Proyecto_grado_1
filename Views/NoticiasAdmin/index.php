@@ -41,6 +41,8 @@ $paginaActual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
 
 
 <?php 
+$vistaActual = 3;
+
 include '../Layouts/header.php';
 include '../NoticiasAdmin/edit.php';
 include '../NoticiasAdmin/create.php';

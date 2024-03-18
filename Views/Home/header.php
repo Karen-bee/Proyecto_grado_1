@@ -100,6 +100,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="/Literagiando/Views/UserCard/perfil.php" class="dropdown-item"><i class='bx bx-user'></i> Perfil</a></li>
+                                <li><a href="/Literagiando/Views/Dashboard.php" class="dropdown-item"><i class='bx bx-desktop'></i> Admin</a></li>
                                 <li><a href="/Literagiando/App/Controllers/Login/LogoutController.php" class="dropdown-item"><i class='bx bx-power-off'></i> Logout</a></li>
                             </ul>
                         </li>

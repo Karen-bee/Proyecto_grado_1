@@ -1,4 +1,6 @@
 <?php
+$vistaActual = 10;
+
 include '../Layouts/header.php';
 
 require_once (__DIR__ . '/../../App/Controllers/HomeController.php');
@@ -40,6 +42,7 @@ $titulo = $sobre_nosotros;
      
 
 include 'create.php';
+include 'edit.php';
 
 
 ?>
@@ -273,12 +276,32 @@ include 'create.php';
                 // Obtener todos los elementos <td> de la fila
                 var celdas = fila.querySelectorAll("td");
 
+
                 // Iterar sobre los elementos de la fila
                 celdas.forEach(function(celda, index) {
                     // Obtener el nombre de la columna desde el encabezado de la tabla
                     var nombreColumna = fila.closest("table").querySelector("th:nth-child(" + (index + 1) + ")").textContent;
 
-                   
+                   if (nombreColumna == "ID"){
+                      var valorCelda = celda.querySelector("span").textContent;
+                      document.getElementById('idProfe').value = valorCelda;
+                      return;
+                   }
+                   if (nombreColumna == "Nombre"){
+                      var valorCelda = celda.querySelector("span").textContent;
+                      document.getElementById('nombreProfe').value = valorCelda;
+                      return;
+                   }
+                   if (nombreColumna == "Cargo"){
+                      var valorCelda = celda.querySelector("span").textContent;
+                      document.getElementById('cargoProfe').value = valorCelda;
+                      return;
+                   }
+                   if (nombreColumna == "Facultad"){
+                      var valorCelda = celda.querySelector("span").textContent;
+                      document.getElementById('facuProfe').value = valorCelda;
+                      return;
+                   }
 
                     if(nombreColumna == 'activo' || nombreColumna == 'Acción' ||  nombreColumna == 'imagen'){
                       //document.getElementById(nombreColumna).value = valorCelda;
@@ -325,20 +348,21 @@ include 'create.php';
       <th scope="col">Nombre</th>
       <th scope="col">Cargo</th>
       <th scope="col">Facultad</th>
-      <th scope="col">imagen</th>
-      <th scope="col">accion</th>
+      <th scope="col">Imagen</th>
+      <th scope="col">Accion</th>
     </tr>
 </thead>
   <tbody class="table-group-divider">
     <?php foreach ($profesores as $person) { ?>
     
     <tr>
-      <td><?php echo $person['id']  ?></td>
-      <td><?php echo $person['nombre'] ?></td>
-      <td><?php echo $person['cargo'] ?></td>
-      <td><?php echo $person['facultad'] ?></td>
+      <td><span><?php echo $person['id']  ?></span></td>
+      <td><span><?php echo $person['nombre'] ?></span></td>
+      <td><span><?php echo $person['cargo'] ?></span></td>
+      <td><span><?php echo $person['facultad'] ?></span></td>
       <td><img src="<?php echo $person['imagen'] ?>" alt="Imagen"></td>
       <td>
+      <a href="#" class="btn btn-outline-dark btn-sm editar" data-bs-toggle="modal" data-bs-target="#EditarProfe"><i class='bx bxs-edit'></i></a>
       <a href="/Literagiando/Routes/HomeRouter.php?accion=eliminar&id=<?php echo htmlspecialchars($person['id']); ?>" class="btn btn-outline-danger btn-sm"><i class='bx bx-trash'></i></a> 
       </td>
     </tr>

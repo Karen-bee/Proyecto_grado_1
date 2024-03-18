@@ -15,11 +15,14 @@
 			$fila = $resultado->fetch_assoc();
 			$rol = $fila['rol'];
 			
-			if ($rol == 1) {
-				// Si el "rol" es igual a 1(Staffs), no se hace nada
-			} elseif ($rol == 2) {
-				// Si el "rol" es igual a 2(Usuarios), redirigir al usuario
-				header('Location: home.php');
+			// Consulta SQL para obtener el rol del usuario
+			$query = "SELECT * FROM roles_permisos WHERE idrol = $rol AND id_pagina  = 6;";
+			$resultado = $conexion->query($query);
+			
+			if (!$resultado || $resultado->num_rows == 0) {
+				echo '<script>
+                alert("No tiene permisos para acceder a la pagina");
+                window.location= "/Literagiando/Views/Home/index.php"</script>';
 				exit;
 			}
 		}

@@ -81,7 +81,7 @@
 																			<div style="min-width: 248px; height: 475px;">
 																				<div class="card rounded-3 shadow-sm border-primary">
 																					<div class="card-header border-primary py-2">
-																						<h5 class="my-0 fw-normal">
+																						<h5 class="my-0 fw-normal limited-height">
 																							'.$fila['titulo'].'
 																						</h5>
 																					</div>

@@ -16,7 +16,8 @@ $busqueda = isset($_GET['busqueda']) ? $_GET['busqueda'] : null;
 if($users['state']==1){
   $users = $users['users'];
 }else{
-  alert("error al obtener datos");
+  echo $users['mensaje'];
+
 }
 
 if($busqueda){
@@ -35,7 +36,7 @@ if($busqueda){
 }
 
 // Calcular el número total de páginas que se van a mostrar en la paginación
-$usersPorPagina = 6;
+$usersPorPagina = 8;
 $totalPaginas = ceil(count($users) / $usersPorPagina);
 
 $inicio = ($paginaActual - 1) * $usersPorPagina;
@@ -58,6 +59,9 @@ function actualizarPaginacion($totalPaginas,$paginaActual) {
 ?>
 
 <?php 
+
+$vistaActual = 8;
+
 include '../Layouts/header.php';
 include '../UserAdmin/create.php';
 include '../UserAdmin/edit.php';

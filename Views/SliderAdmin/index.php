@@ -7,7 +7,7 @@ $sliders = $sliderController->ObtenerAllSlidersController();
 if($sliders['state']==1){
   $sliders = $sliders['sliders'];
 }else{
-  alert("error al obtener datos");
+  echo '<script>alert("error al obtener datos")</script>';
 }
 
 $paginaActual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
@@ -30,6 +30,8 @@ function actualizarPaginacion($totalPaginas,$paginaActual) {
   }
   echo '</ul>';
 }
+
+$vistaActual = 5;
 
 include '../Layouts/header.php';
 include '../SliderAdmin/create.php';

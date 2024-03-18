@@ -34,7 +34,7 @@ foreach ($arrayDividido as $key => $values) {
     <?php  $i++;}?>
 
 
-    <img src="/Literagiando/Resources/img/mano.png" class="card-img-top" alt="">
+    <img src="/Literagiando/Resources/img/mano.png" class="card-img-top2" alt="">
     </div>   
     
 </div>

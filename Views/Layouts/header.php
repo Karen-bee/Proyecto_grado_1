@@ -40,6 +40,8 @@ function formatfecha($fe){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+
     
     <!-- Import CSS-->
     <link rel="stylesheet" type="text/css"  href="/Literagiando/Resources/css/App.css">
@@ -59,7 +61,11 @@ function formatfecha($fe){
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
+
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
     
 </head>
 <body>
@@ -78,6 +84,7 @@ function formatfecha($fe){
             <?php  echo $row['nombre_completo']?>
           </a>
           <ul class="dropdown-menu">
+            <li><a href="/Literagiando/Views/Home/index.php" class="dropdown-item" href=""><i class='bx bx-home'></i> Home</a></li>
             <li><a href="/Literagiando/Views/UserCard/perfil.php" class="dropdown-item" href=""><i class='bx bx-user'></i> Perfil</a></li>
             
             <li><a href="/Literagiando/App/Controllers/Login/LogoutController.php" class="dropdown-item" href=""><i class='bx bx-power-off' ></i> Logout</a></li>
@@ -88,10 +95,28 @@ function formatfecha($fe){
   </div>
 </nav> 
 <script>
+        function verifyRol(idPagina){
+          var paginas = <?php echo json_encode($paginasPermitidas); ?>;
+          var rol = <?php echo $rol; ?>;
+
+          var paginasFiltradas = paginas.filter(function(pagina) {
+            return rol == pagina['idrol'];
+          });
+
+          var paginaEncontrada = paginasFiltradas.some(function(pagina) {
+              return pagina['id_pagina'] == idPagina;
+          });
+
+          if (!paginaEncontrada) {
+              alert("Acceso denegado");
+              window.location.href = "/Literagiando/Views/Home/index.php";
+          }
+        
+        }
         document.addEventListener("DOMContentLoaded", function() {
             var paginas = <?php echo json_encode($paginasPermitidas); ?>;
 
-            // Obtén el ID de rol del usuario actual, ya sea mediante PHP o algún otro método
+            // Obtén el ID de rol 
             var rol = <?php echo $rol; ?>;
 
             // Filtra las páginas según el ID de rol del usuario actual
@@ -127,6 +152,8 @@ function formatfecha($fe){
 
               navList.appendChild(listItem);
         });
+              var paginaActual = <?php echo $vistaActual; ?>;
+              verifyRol(paginaActual);
         });
     </script>
 <div class="sidebar">

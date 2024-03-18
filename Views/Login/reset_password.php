@@ -60,7 +60,7 @@
                             <a class="enlace1" href="/Literagiando/Views/Home/index.php">Volver a inicio de sesión</a>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <button type="submit" name="reset_password" class="btn3">Cambiar Contraseña</button>
+                            <button type="submit" id="submit_button" name="reset_password" class="btn3">Cambiar Contraseña</button>
                         </div>
                         <p class="pregistro">¿No te has registrado?.</p>
                         <a class="enlace2" href="register_user.php">Registrate aqui.</a>
@@ -77,67 +77,71 @@
 </html>
 
 <script>
-  $('#nueva_contraseña').on('change', function () {
-    var password = $(this).val();
-    var regexLowercase = /[a-z]/;
-    var regexUppercase = /[A-Z]/;
-    var regexDigit = /\d/;
-    var regexSpecialChar = /[@#$%^&+=!]/;
-    var minLength = 8;
+ $('#nueva_contraseña').on('change', function () {
+  var password = $(this).val();
+  var regexLowercase = /[a-z]/;
+  var regexUppercase = /[A-Z]/;
+  var regexDigit = /\d/;
+  var regexSpecialChar = /[@#$%^&+=!]/;
+  var minLength = 8;
 
-    var isValid = true;
-    var message = '';
+  var isValid = true;
+  var message = '';
 
-    if (!regexLowercase.test(password)) {
-      isValid = false;
-      message += 'Debe contener al menos una letra minúscula.\n';
-    }
+  if (!regexLowercase.test(password)) {
+    isValid = false;
+    message += 'Debe contener al menos una letra minúscula.\n';
+  }
 
-    if (!regexUppercase.test(password)) {
-      isValid = false;
-      message += 'Debe contener al menos una letra mayúscula.\n';
-    }
+  if (!regexUppercase.test(password)) {
+    isValid = false;
+    message += 'Debe contener al menos una letra mayúscula.\n';
+  }
 
-    if (!regexDigit.test(password)) {
-      isValid = false;
-      message += 'Debe contener al menos un dígito.\n';
-    }
+  if (!regexDigit.test(password)) {
+    isValid = false;
+    message += 'Debe contener al menos un dígito.\n';
+  }
 
-    if (!regexSpecialChar.test(password)) {
-      isValid = false;
-      message += 'Debe contener al menos un carácter especial (@#$%^&+=!).\n';
-    }
+  if (!regexSpecialChar.test(password)) {
+    isValid = false;
+    message += 'Debe contener al menos un carácter especial (@#$%^&+=!).\n';
+  }
 
-    if (password.length < minLength) {
-      isValid = false;
-      message += 'Debe tener una longitud mínima de ' + minLength + ' caracteres.\n';
-    }
+  if (password.length < minLength) {
+    isValid = false;
+    message += 'Debe tener una longitud mínima de ' + minLength + ' caracteres.\n';
+  }
 
-    if (isValid) {
-      $('#message').text('Contraseña válida').css('color', 'green');
-    } else {
-      $('#message').text(message).css('color', 'red');
-    }
-  });
+  if (isValid) {
+    $('#message').text('Contraseña válida').css('color', 'green');
+  } else {
+    $('#message').text(message).css('color', 'red');
+    $('#submit_button').prop('disabled', true); // Desactivar el botón de envío del formulario
+  }
+});
 
-  $('#confirmar_contraseña').on('change', function () {
-    var password = $(this).val();
-    var password2 = $('#nueva_contraseña').val();
+$('#confirmar_contraseña').on('change', function () {
+  var password = $(this).val();
+  var password2 = $('#nueva_contraseña').val();
+
+  var isValid = true;
+  var message = '';
+
+  if (password2 != password) {
+    isValid = false;
+    message += 'Las contraseñas no coinciden.\n';
+  }
+
+  if (isValid) {
+    $('#message2').text('').css('color', 'green');
+    $('#submit_button').prop('disabled', false); // Habilitar el botón de envío del formulario si no hay errores
+  } else {
+    $('#message2').text(message).css('color', 'red');
+    $('#submit_button').prop('disabled', true); // Desactivar el botón de envío del formulario si hay errores
+  }
+});
 
 
-    var isValid = true;
-    var message = '';
 
-    if (password2 != password) {
-      isValid = false;
-      message += 'Las contraseñas no coinciden.\n';
-    }
-    console.log(password, password2);
-
-    if (isValid) {
-      $('#message2').text('').css('color', 'green');
-    } else {
-      $('#message2').text(message).css('color', 'red');
-    }
-  });
 </script>

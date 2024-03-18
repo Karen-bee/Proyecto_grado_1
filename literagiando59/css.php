@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" type="text/css" href="<?php echo base_urls; ?>recursos/css/style.css<?php include('includes/codificacion.php'); ?>" />
 		
 		<!-- .Bootstrap, Icons, Fonts, Extras -->

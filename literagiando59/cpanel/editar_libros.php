@@ -2,15 +2,17 @@
 	ob_start();
 	
 	// Sesión
-	require_once('../includes/session_staff.php');
+	//require_once('../includes/session_staff.php');
 	
 	// Include
-	require_once('../includes/includes.php');
+	//require_once('../includes/includes.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
 	<!-- .Head -->
 	<head>
+		<?php include('../css.php'); ?>
+
 		<!-- .UTF-8 -->
 		<?php echo base_utf8_php; ?>
 		
@@ -20,7 +22,6 @@
 		<title>Editar libros - <?php echo base_titulo_2; ?></title>
 		
 		<!-- .CSS -->
-		<?php include('../css.php'); ?>
 		
 		<!-- .Indexación -->
 		<?php echo base_sin_indexacion; ?>
@@ -459,7 +460,7 @@
 				}
 				
 				// Ruta donde se guardará la imagen
-				$rutaGuardada = "../recursos/img/portadas/" . $nombreImagen;
+				$rutaGuardada = "../../literagiando59/recursos/img/portadas/" . $nombreImagen;
 
 				// Mover la imagen desde la ubicación temporal a la ruta final
 				move_uploaded_file($_FILES["portada"]["tmp_name"], $rutaGuardada);

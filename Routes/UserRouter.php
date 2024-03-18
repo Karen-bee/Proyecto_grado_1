@@ -376,9 +376,8 @@
             $mensaje = "formulario incompleto " ;
             echo "<pre>";
             print_r($_POST);
-            print_r($respuesta);
             echo "</pre>";
-            //echo "<script> alert('" . $mensaje . "'); window.history.go(-1);</script>";
+            echo "<script> alert('" . $mensaje . "'); window.history.go(-1);</script>";
         }
 
     }

@@ -191,7 +191,7 @@ echo '
 																Swal.fire({
 																	title: "ERROR AL SELECCIONAR LIBROS!",
 																	icon: "warning",
-																	html: "La cantidad de libros seleccionados, fue superior a 3 libros. Debes seleccionar hasta un máximo de 3 libros y no menos de 1 libro.",
+																	html: "La cantidad de libros seleccionados = , fue superior a 3 libros. Debes seleccionar hasta un máximo de 3 libros y no menos de 1 libro.",
 																	allowOutsideClick: false,
 																	showCloseButton: false,
 																	showCancelButton: false,
@@ -219,7 +219,7 @@ echo '
 																<input
 																	class="form-control"
 																	type="text"
-																	value="00<? echo $id; ?>"
+																	value="00<?php echo $id; ?>"
 																	autocomplete="off"
 																	placeholder="Ingrese el titulo del libro"
 																	title=""
@@ -234,7 +234,7 @@ echo '
 																<label>
 																	<i class="fa fa-text-width fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;Titulo del libro
 																</label>
-																<input class="input-checkbox" type="checkbox" name="id_libro_<? echo $id; ?>" value="<? echo $id; ?>" onchange="updateSelectedCount()" checked hidden />
+																<input class="input-checkbox" type="checkbox" name="id_libro_<?php echo $id; ?>" value="<?php echo $id; ?>" onchange="updateSelectedCount()" checked hidden />
 																<input
 																	class="form-control"
 																	type="text"
@@ -264,12 +264,13 @@ echo '
 				}
 			} else {
 				// Manejar el caso de que no se hayan seleccionado libros
+				echo '<script>console.log(' . json_encode($_POST) . ')</script>';
 echo '
 															<script>
 																Swal.fire({
 																	title: "ERROR AL SELECCIONAR LIBROS!",
 																	icon: "warning",
-																	html: "La cantidad de libros seleccionados, fue inferior a 1 libro. Debes seleccionar mínimo 1 libro y hasta un máximo de 3 libros.",
+																	html: "La cantidad de libros seleccionados = , fue inferior a 1 libro. Debes seleccionar mínimo 1 libro y hasta un máximo de 3 libros.",
 																	allowOutsideClick: false,
 																	showCloseButton: false,
 																	showCancelButton: false,
@@ -504,7 +505,7 @@ echo '
             Swal.fire({
                 title: "ERROR AL SELECCIONAR LIBROS!",
                 icon: "warning",
-                html: "La cantidad de libros seleccionados, fue inferior a 1 libro. Debes seleccionar mínimo 1 libro y hasta un máximo de 3 libros.",
+                html: "La cantidad de libros seleccionados = , fue inferior a 1 libro. Debes seleccionar mínimo 1 libro y hasta un máximo de 3 libros.",
                 allowOutsideClick: false,
                 showCloseButton: false,
                 showCancelButton: false,

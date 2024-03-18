@@ -4,6 +4,54 @@ require_once (__DIR__.'/../App/Controllers/Login/RoleController.php');
 
 require_once (__DIR__.'/../App/Controllers/Login/PermisosController.php');
 
+function eliminarRol() {
+    $permisoController = new RoleController();
+    
+            $datos = array(
+                "idrol" => $_GET["idrol"]
+            );
+    
+            if($datos['idrol'] == "1"){
+                echo '<script>alert("No se puede borrar el rol de administrador");window.location.href = "/Literagiando/Views/Roles/index.php"; </script>';
+                return; 
+            }
+    
+            if($datos['idrol'] == "2"){
+                echo '<script>alert("No se puede borrar el rol predeterminado");window.location.href = "/Literagiando/Views/Roles/index.php"; </script>';
+                return; 
+            }
+    
+            $resultado = $permisoController->EliminarRolController($datos);
+    
+            // Redirigir después de la edición
+            if ($resultado['state']) {
+                
+                //header("Location: index.php");
+                //exit();
+                $pagina_anterior = $_SERVER['HTTP_REFERER'];
+                header("Location: $pagina_anterior");
+
+            } else {
+                // Manejar el caso de error si es necesario
+                echo "Error al editar el rol.";
+
+                if ($resultado['mensaje'] instanceof PDOException) {
+                    if($resultado['mensaje']->getCode() == 23000){
+                        echo '<script>alert("No se puede borrar el rol porque aun tiene permisos, elimine todos sus permisos primero");window.location.href = "/Literagiando/Views/Roles/index.php"; </script>';
+                        return; 
+                    }else{
+                        echo "<pre>";
+                        print_r($_GET);
+                        print_r($resultado['mensaje']->getCode());
+                        echo "</pre>";
+                        }
+                } else {
+                    echo "<pre>";
+                    print_r($resultado);
+                    echo "</pre>";
+                }
+            }
+    }
 
 function eliminarPermiso() {
 $permisoController = new PermisosController();
@@ -68,7 +116,7 @@ class RolRouter {
     }
 
     public function route() {
-        $action = isset($_POST['action']) ? $_POST['action'] : '';
+        $action = isset($_POST['action']) ? $_POST['action'] : $_GET['action'];
 
         switch ($action) {
             case 'editar':
@@ -81,6 +129,10 @@ class RolRouter {
             
             case 'eliminarPermiso':
                 eliminarPermiso();
+                break;
+
+            case 'eliminarRol':
+                eliminarRol();
                 break;
             
             case 'crearPermiso':
@@ -130,8 +182,7 @@ class RolRouter {
             if ($resultado['state']) {
                 //header("Location: index.php");
                 //exit();
-                $pagina_anterior = $_server['http_referer'];
-                header("location: $pagina_anterior");
+                echo "<script>alert('Se ha editado con exito');window.location.href =  '/Literagiando/Views/Roles/index.php'</script>";
             } else {
                 // Manejar el caso de error si es necesario
                 echo "Error al editar el rol.";
